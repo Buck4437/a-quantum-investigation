@@ -9,3 +9,5 @@ Each group member submits the work on Moodle (no group submission).
 (2) how original is your product
 (3) how accessible is your product (i.e. non-technical, easy to enjoy)
 
+I will use a password system on the main page to mark completions.
+Write solution page for each puzzle.

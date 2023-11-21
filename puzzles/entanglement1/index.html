@@ -19,18 +19,10 @@
                 <div class="rules">
                     Rules:<br>
                     <ul>
-                        <li>
-                            There are three levels in total.
-                        </li>
-                        <li>
-                            Each level presents a different entanglement relationship between Alice and Bob.
-                        </li>
-                        <li>
-                            Your target is to guess what Alice / Bob is thinking of. Guess it correctly 3 times in a row to proceed.
-                        </li>
-                        <li>
-                            With the power of entanglement, you can deduce what is in their mind!
-                        </li>
+                        <li>There are four levels in total.</li>
+                        <li>Each level presents a different entanglement relationship between Alice and Bob.</li>
+                        <li>Your target is to guess what Bob is thinking of. Guess it correctly 3 times in a row to proceed.</li>
+                        <li>Hint: Deduce their entanglement relationship, and use that to guess what is in Bob's mind!</li>
                     </ul>
                 </div>
                 
@@ -38,27 +30,50 @@
                 <hr width="100%">
 
                 <div class="game">
-                    <span class="level-display">Level {{level}}</span>
+                    <template v-if="level <= LEVELMAX">
+                        <span class="level-display">Level {{level}}</span>
 
-                    <div class="characters">
-                        <div class="alice">
-                            Alice<br>
-                            I am thinking of: 1
+                        <span>Streak: {{streak}}/3</span>
+    
+                        <div class="characters">
+                            <div class="alice">
+                                Alice<br>
+                                I am thinking of: <span class="thinking-of">{{text.aliceGen}}</span>
+                            </div>
+                            <div class="bob">
+                                Bob<br>
+                                I am thinking of: <span class="thinking-of">{{bobText}}</span>
+                            </div>
                         </div>
-                        <div class="bob">
-                            Bob<br>
-                            I am thinking of: ???
+                        <div class="prompt" v-show="canSubmit">
+                            What is Bob thinking of?<br><br>
+                            <input v-model="text.input" ref="guessSubmissionField">
+                            <button @click="submit()">Submit guess</button>
+                            <button @click="submit(true)">Give up</button>
                         </div>
-                    </div>
-                    <div class="prompt">
-                        What is Bob thinking of?<br>
-                        <input v-model="inputText"><button>Submit guess</button><button>Give up</button>
+                        <div class="result" v-show="showStat">
+                            Bob is thinking of <span class="thinking-of">{{text.answer}}</span>!<br>
+                            Your guess: <span :class="getGuessClass" class="thinking-of">{{text.guess}}</span><br>
+    
+                            <div v-show="streak >= 3">
+                                Congratulations, you have completed the level!<br>
+                            </div>
+                            
+                            <br>
+    
+                            <button @click="proceed">Proceed</button>
+                        </div>
+                    </template>
+                    <div v-else="level > LEVELMAX">
+                        Game complete!<br><br>
+                        The password is: <span class="password">{{text.password}}</span>.<br>
+                        <button @click="reset">Play again</button>
                     </div>
                 </div>
             </base-puzzle>
         </div>
     </body>
-    <script src="../../libraries/vue.min.js"></script>
+    <script src="../../libraries/vue.js"></script>
 
     <script src="../../global/BasePuzzle.js"></script>
     <script src="javascripts/index.js"></script>
