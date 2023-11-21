@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Loading...</title>
+        <link rel="stylesheet" href="./stylesheets/styles.css">
+        <link rel="stylesheet" href="../../global/styles.css">
+    </head>
+    <body>
+        <div id="app">
+            <base-puzzle :title="title" class="puzzle">
+                <template v-slot:flavour-text>
+                    Even when far apart, Alice's and Bob's mind are always entangled.<br>
+                    Can you guess what they are thinking in their mind?
+                </template>
+
+                <hr width="100%">
+
+                <div class="rules">
+                    Rules:<br>
+                    <ul>
+                        <li>
+                            There are three levels in total.
+                        </li>
+                        <li>
+                            Each level presents a different entanglement relationship between Alice and Bob.
+                        </li>
+                        <li>
+                            Your target is to guess what Alice / Bob is thinking of. Guess it correctly 3 times in a row to proceed.
+                        </li>
+                        <li>
+                            With the power of entanglement, you can deduce what is in their mind!
+                        </li>
+                    </ul>
+                </div>
+                
+
+                <hr width="100%">
+
+                <div class="game">
+                    <span class="level-display">Level {{level}}</span>
+
+                    <div class="characters">
+                        <div class="alice">
+                            Alice<br>
+                            I am thinking of: 1
+                        </div>
+                        <div class="bob">
+                            Bob<br>
+                            I am thinking of: ???
+                        </div>
+                    </div>
+                    <div class="prompt">
+                        What is Bob thinking of?<br>
+                        <input v-model="inputText"><button>Submit guess</button><button>Give up</button>
+                    </div>
+                </div>
+            </base-puzzle>
+        </div>
+    </body>
+    <script src="../../libraries/vue.min.js"></script>
+
+    <script src="../../global/BasePuzzle.js"></script>
+    <script src="javascripts/index.js"></script>
+</html>
