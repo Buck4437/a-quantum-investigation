@@ -19,8 +19,7 @@
                     <p>
                         We might be inclined to think that a measurement is like weighting an object.<br>
                         However, it is actually closer to asking a question.<br> 
-                        The result might not be defined before asking the question, 
-                        but you will get an answer after asking it.<br>
+                        The result might not be defined before asking the question, but you will get an answer after asking it.<br>
                     </p>
 
                     <p>
@@ -28,24 +27,25 @@
                         and the answer behaves like in a state of superposition.<br>
                     </p>
                 </div>
-                
-                <div class="rules">
-                    Maybe include the lore in the game instead.<br>
-                </div>
 
                 <hr width="100%">
 
                 <div class="game">
-                    <div class="lore">
-                        You want to ask Ayana out for a meal.<br>
-                        Professor Hiro has given you a secret weapon, a sensor that tells you the possibility of outcomes.<br>
-                        You thanked Professor Hiro, set the sensor to tell you that, if Ayana would accept your invitation to a meal.
-                        You saw Ayana at the sidewalk, and you pointed the sensor to Ayane:<br>
-                        Possibility: 10^-20 %.<br><br>
-                        Wow.<br>
-                        However, you have prepared an extra sets of manevours, to hopefully bump up the possibility of getting a yes.<br>
-                        After all, the answer is not defined before you ask her out!<br>
-                        Use these manevours carefully, and tip the balance to your favour!
+                    <!-- <div v-if="loreText !== null" class="lore">
+                        {{loreText}}
+                    </div>
+                    <div>
+                        <button v-if="loreText !== null" @click="textId++" class="next">Next</button>
+                    </div> -->
+                    <div class="content" v-if="loreText === null || true">
+                        <div class="left">
+                            <div>Ayane's Answer: ??????</div>
+                            <div>Probability of yes: {{probability}}</div>
+                        </div>
+                        <div class="right">
+                            <button v-for="move in moves" @click="playMove(move)" class="move-btn">{{move.name}}</button>
+                        </div>
+                        
                     </div>
                 </div>
             </base-puzzle>

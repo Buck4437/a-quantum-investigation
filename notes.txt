@@ -18,6 +18,10 @@ Overall structure:
 
 Alice and Bob's Entanglement
 - Add assets for Alice, Bob, and then somehow express their Entanglement relationship using art / canvas / whatever
+- Add password
+
+Entangled Cube
+- Add password
 
 Dating simulator (WIP):
 - Use a sequence of move to increase the probability dating success from 10^-12% to 100%.
@@ -29,11 +33,6 @@ Entangled puzzle:
 Note: Might have to be tested in local server
 
 - Idea 1: Measure a qubit in 2 different directions, lead to 4 different pictures of puz in another tab
-- Idea 2: A qubit has 6 possible measurement results, 3 directions (?), they are "ANSWER"
-    Another qubit has 6 possible measurement results, 3 directions, dependent on measurement of other
-    (WIP):  Needs refactoring
-            Cube display
-            Testing
 
 Superposition
 - Catch the thief game (?)
