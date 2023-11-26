@@ -1,6 +1,7 @@
 html {
     font-family: monospace;
-    color: black;
+    color: white;
+    background-color: black;
 }
 
 .COMPONENT.base-puzzle {

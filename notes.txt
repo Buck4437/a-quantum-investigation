@@ -11,3 +11,37 @@ Each group member submits the work on Moodle (no group submission).
 
 I will use a password system on the main page to mark completions.
 Write solution page for each puzzle.
+
+TODO:
+Overall structure:
+- I want to add some kind of story 
+
+Alice and Bob's Entanglement
+- Add assets for Alice, Bob, and then somehow express their Entanglement relationship using art / canvas / whatever
+
+Dating simulator (WIP):
+- Use a sequence of move to increase the probability dating success from 10^-12% to 100%.
+
+Entangled puzzle:
+- Introduction: Two parts, password hv 2 parts as well (just plain text)
+    Also need a playground lol
+
+Note: Might have to be tested in local server
+
+- Idea 1: Measure a qubit in 2 different directions, lead to 4 different pictures of puz in another tab
+- Idea 2: A qubit has 6 possible measurement results, 3 directions (?), they are "ANSWER"
+    Another qubit has 6 possible measurement results, 3 directions, dependent on measurement of other
+    (WIP):  Needs refactoring
+            Cube display
+            Testing
+
+Superposition
+- Catch the thief game (?)
+- Quantum Card Game?
+- Make words, but you need to use quantum letters
+
+
+Ideas from ChatGPT:
+- Quantum State Manipulation: Players can manipulate objects or elements in the game to exist in superpositions of different states. The objective is to use these superposed states strategically to solve puzzles. For example, a puzzle might require aligning objects in such a way that their superposed states interact constructively to unlock a door or reveal a hidden path.
+- Quantum Marble Puzzle: Objective: The objective of this puzzle is to determine the location of a quantum marble placed in a grid by using clues that involve quantum superposition.
+- Quantum Word Puzzle: Objective: Reveal a hidden word by deducing the correct order of letters based on clues involving quantum superposition.
