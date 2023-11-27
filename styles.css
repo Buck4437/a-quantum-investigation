@@ -1,3 +1,21 @@
+.dedication {
+    font-style: italic;
+    padding-bottom: 16px;
+}
+
+#main-content {
+    text-align: left;
+}
+
 a, a:hover, a:visited, a:active {
     color: lime;
+}
+
+.section {
+    font-size: 20px;
+    padding-bottom: 8px;
+}
+
+ul {
+    margin-bottom: 16px;
 }

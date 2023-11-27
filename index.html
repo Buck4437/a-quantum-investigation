@@ -9,34 +9,45 @@
     </head>
     <body>
         <div id="app">
-            Quantum Puzzle Hunt<br>
-            Add attribution to Vue.js<br>
-            
-            My notebook:<br>
-            Beginning
-            <ul>
-                <li v-for="(link, i) in unlockedIntros">
-                    <a :href="link.anchor" target="_blank">{{link.name}}</a>
-                    <span v-if="solves.intro[i]" class="password">Memo: {{link.answer}}</span>
-                </li>
-            </ul>
+            <base-puzzle title="Quantum Puzzle Hunt" id="main-content">
+                <div>
+                    <div class="dedication">
+                        Website powered by <a href="https://vuejs.org/" target="_blank">Vue.js</a> by Evan You.
+                    </div>
 
-            Superposition
-            
-            <hr width="100%">
-<!-- 
-            Introductions, Quantum box 1, Quantum Thief, Idk
+                    <div class="section">Beginning</div>
+                    <ul>
+                        <li v-for="(link, i) in unlockedIntros">
+                            <a :href="link.anchor" target="_blank">{{link.name}}</a>
+                            <span v-if="solves.intro[i]" class="password">Memo: {{link.answer}}</span>
+                        </li>
+                    </ul>
+                    <hr width="100%">
 
-            Entanglement
-            Alice and Bob, Quantum box 2, Dating Sim or Lottery
+                    <template v-if="solves.intro[2]">
+                        <div class="section">Superposition</div>
 
-            Chaos
+                        <i>"Now that you have a basic understanding of quantum, I hope you can help me solve these problems."</i>
+                        
+                        <hr width="100%">
+                    </template>
+        <!-- 
+                    Introductions, Quantum box 1, Quantum Thief, Idk
 
-            Wrap-up -->
+                    Entanglement
+                    Alice and Bob, Quantum box 2, Dating Sim or Lottery
 
-            Add Memo: <input v-model="inputModel" placeholder="Enter memo here..."> <button @click="submit">Submit</button>
+                    Chaos
+
+                    Wrap-up -->
+
+                    Add Memo: <input v-model="inputModel" ref="memoField" placeholder="Enter memo here..."> <button @click="submit">Submit</button>
+                </div>
+            </base-puzzle>
         </div>
     </body>
+
     <script src="Libraries/vue.min.js"></script>
+    <script src="global/BasePuzzle.js"></script>
     <script src="index.js"></script>
 </html>

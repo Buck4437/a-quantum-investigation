@@ -58,7 +58,11 @@ const app = new Vue({
     methods: {
         submit() {
             const answer = this.inputModel.trim().toUpperCase();
-            
+
+            if (answer === "") {
+                return;
+            }
+
             this.inputModel = "";
 
             let solved = false;
@@ -84,5 +88,12 @@ const app = new Vue({
                 alert("This doesn't seem useful... Maybe you shouldn't note this down.")
             }
         }
+    },
+    mounted() {
+        this.$refs.memoField.addEventListener("keydown", e => {
+            if (e.keyCode === 13) {
+                this.submit();
+            }
+        })
     }
 })
