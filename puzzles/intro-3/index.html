@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Loading...</title>
+        <link rel="stylesheet" href="./stylesheets/styles.css">
+        <link rel="stylesheet" href="../../global/styles.css">
+    </head>
+    <body>
+        <div id="app">
+            <base-puzzle :title="title" class="puzzle">
+                <hr width="100%">
+
+                <div class="intro">
+                    <p>
+                        He brought you to a room filled with packages.
+                        He removes 16 packages from the shelf. Each of them has a label that looks like this:
+                    </p>
+
+                    <div class="label-con">
+                        <div class="label">
+                            <span class="red">O</span>|<span class="blue">O</span>
+                        </div>
+                    </div>
+                    
+                    <p>
+                        He places them on a table, in a 4x4 grid. "Are these lootboxes?" You asked. 
+                    </p>
+
+                    <p>
+                        "Yes, but actually no. Try to open them and see what you get."                        
+                    </p>
+                    
+                    <div class="experiment">
+                        <table>
+                            <tr v-for="i in 4">
+                                <td v-for="j in 4">
+                                    <span v-if="seed != -1" :class="classOf(i, j)">O</span>
+                                    <span v-else>?</span>
+                                </td>
+                            </tr>
+                        </table>
+    
+                        <button @click="openAll(1)">Open all</button>
+                    </div>
+
+                    <template v-if="seed != -1">
+                        <p>
+                            "These look like ordinary lootboxes, right?" He removes the opened packages on the table, 
+                            and prepares a new set of lootbox with the exact same labels.
+                            "Now look at what happens when I do this." He pulls out a mystical device from his pocket,
+                            points it at the packages, and presses a button. 
+                            The device radiates a strong blue light at the packages.
+                        </p>
+
+                        <p>
+                            "Now, try to open the packages again."
+                        </p>
+
+                        <div class="experiment experiment2">
+                            <table>
+                                <tr v-for="i in 4">
+                                    <td v-for="j in 4">
+                                        <span v-if="seed2 != -1" class="blue">O</span>
+                                        <span v-else>?</span>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button @click="openAll(2)">Open all</button>
+                        </div>
+                    </template>
+
+                    <template v-if="seed2 != -1">
+                        <p>
+                            "Interesting, isn't it? As long as the packages are not opened,
+                            we can change the states of the objects inside the packages, 
+                            and make everything blue," he explained.
+                        </p>
+
+                        <p>
+                            "These aren't merely lootboxes, these are quantum lootboxes. 
+                            In fact, the objects are said to be in a <span class="password">SUPERPOSITION</span> state."
+                        </p>
+
+                        <p>
+                            "For a normal lootbox, the object inside is predefined: 
+                            it is either red or blue, even before you open it."
+                        </p>
+
+                        <p>
+                            "For a quantum lootbox, however, the state of the object is not defined 
+                            until you open the lootbox. You have some chance of getting red, and some chance of getting blue.
+                            This state is called a <span class="password">SUPERPOSITION</span> state."
+                        </p>
+
+                        <p>
+                            "This allows you to alter the chance of getting red or blue before opening it, like using my device
+                            - You can't do this with normal lootboxes! This is why I decided to invest in quantum technologies."
+                        </p>
+
+                        <p>
+                            You nod your head. What he said seemed to be important, 
+                            so you noted a <span class="password">keyword</span> inside your memo.
+                        </p>
+                    </template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    
+                    <!-- Talk about Max (aka you) think is lootboxes, but Stephen explains that they aren't-->
+                    <p>
+                        
+                    </p>
+                </div>
+            </base-puzzle>
+        </div>
+    </body>
+    <script src="../../libraries/vue.js"></script>
+
+    <script src="../../global/BasePuzzle.js"></script>
+    <script src="javascripts/index.js"></script>
+</html>

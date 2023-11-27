@@ -1,0 +1,63 @@
+body {
+    font-size: 16px;
+    margin-bottom: 128px;
+}
+
+.intro {
+    text-align: left;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.label-con {
+    text-align: center;
+}
+
+.label {
+    font-size: 50px;
+    border: 2px solid white;
+    display: inline-block;
+    padding: 8px;
+}
+
+.red {
+    color: red;
+}
+
+.blue {
+    color: rgb(99, 99, 252);
+}
+
+.experiment {
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 16px;
+}
+
+td {
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    font-size: 30px;
+    border: 2px solid white;
+}
+
+.experiment2 td {
+    border: 2px solid rgb(99, 99, 252);
+}
+
+button {
+    width: 150px;
+    height: 55px;
+}

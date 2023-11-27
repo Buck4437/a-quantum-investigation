@@ -4,6 +4,6 @@ const app = new Vue({
     data: {
         title: "Mysterious Cube",
         lineColour: "green",
-        states: "?123456"
+        states: "?106395"
     }
 })

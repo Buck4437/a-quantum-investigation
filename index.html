@@ -4,15 +4,37 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Quantum Puzzle Hunt</title>
-        <link rel="stylesheet" href="stylesheets/styles.css">
+        <link rel="stylesheet" href="global/styles.css">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <div id="app">
             Quantum Puzzle Hunt<br>
-            Add attribution to Vue.js
+            Add attribution to Vue.js<br>
+            
+            My notebook:<br>
+            Beginning
             <ul>
-                <li v-for="link in links"><a :href="link.anchor">{{link.name}}</a></li>
+                <li v-for="(link, i) in unlockedIntros">
+                    <a :href="link.anchor" target="_blank">{{link.name}}</a>
+                    <span v-if="solves.intro[i]" class="password">Memo: {{link.answer}}</span>
+                </li>
             </ul>
+
+            Superposition
+            
+            <hr width="100%">
+<!-- 
+            Introductions, Quantum box 1, Quantum Thief, Idk
+
+            Entanglement
+            Alice and Bob, Quantum box 2, Dating Sim or Lottery
+
+            Chaos
+
+            Wrap-up -->
+
+            Add Memo: <input v-model="inputModel" placeholder="Enter memo here..."> <button @click="submit">Submit</button>
         </div>
     </body>
     <script src="Libraries/vue.min.js"></script>

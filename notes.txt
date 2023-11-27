@@ -14,7 +14,12 @@ Write solution page for each puzzle.
 
 TODO:
 Overall structure:
+- Make password system
 - I want to add some kind of story 
+- Assets
+
+Introduction
+- Make sure it works
 
 Alice and Bob's Entanglement
 - Add assets for Alice, Bob, and then somehow express their Entanglement relationship using art / canvas / whatever
@@ -24,6 +29,7 @@ Entangled Cube
 - Add password
 
 Dating simulator (WIP):
+- Remake (Idea: convert to quantum lottery, and you need to try and rig it so that you win)
 - Use a sequence of move to increase the probability dating success from 10^-12% to 100%.
 
 Entangled puzzle:
@@ -33,6 +39,7 @@ Entangled puzzle:
 Note: Might have to be tested in local server
 
 - Idea 1: Measure a qubit in 2 different directions, lead to 4 different pictures of puz in another tab
+- Idea 2: A series of numbres in two different puzzles that are entangled somehow
 
 Superposition
 - Catch the thief game (?)

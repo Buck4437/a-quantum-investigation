@@ -21,3 +21,19 @@ html {
     font-style: italic;
     padding-bottom: 8px;
 }
+
+.password {
+    color: aqua;
+}
+
+button{
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ffffff50;
+    cursor: pointer;
+}
