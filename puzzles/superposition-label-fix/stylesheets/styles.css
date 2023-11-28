@@ -2,6 +2,80 @@ body {
     font-size: 16px;
 }
 
+button {
+    margin: 8px;
+    width: 100px;
+    height: 40px;
+}
+
 ul {
     text-align: left;
+}
+
+.level-display {
+    margin-bottom: 16px;
+}
+
+.main-game-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.box-label {
+    margin-bottom: 16px;
+}
+
+.box-con, .selection-con {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.box-con {
+    border-right: 2px solid white;
+}
+
+table {
+    display: inline-block;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+}
+
+td {
+    border: 2px solid white;
+    width: 50px;
+    height: 50px;
+}
+
+.button-con {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.selection-con td {
+    cursor: pointer;
+}
+
+.red {
+    background-color: red;
+}
+
+.pink {
+    background-color: #ffc0cb;
+    color: grey;
+}
+
+.light-blue {
+    background-color: #7979d1;
+}
+
+.yellow {
+    background-color: #77ff77;
+}
+
+.grey {
+    background-color: #7979d1;
 }
