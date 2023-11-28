@@ -1,7 +1,7 @@
 const app = new Vue({
     el: "#app",
     data: {
-        title: "Ayane's Dining Uncertainty",
+        title: "Inviting Rin",
         exponent: -18,
         collapsed: false,
         textId: 0,

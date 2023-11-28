@@ -22,6 +22,8 @@ Superposition:
 - Quantum Card Game?
 - Make words, but you need to use quantum letters
 
+Missing Label:
+- Add password
 
 Alice and Bob's Entanglement
 - Add assets for Alice, Bob, and then somehow express their Entanglement relationship using art / canvas / whatever
@@ -37,7 +39,7 @@ Dating simulator (WIP):
 Entangled puzzle:
 - Introduction: Two parts, password hv 2 parts as well (just plain text)
     Also need a playground lol
-
+- Use alphabetical order
 
 
 

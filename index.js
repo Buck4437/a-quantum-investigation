@@ -29,7 +29,12 @@ const app = new Vue({
                 {
                     name: "Missing Label",
                     anchor: "./puzzles/superposition-label-fix/index.html",
-                    answer: "??????????????????????????????"
+                    answer: "A"
+                },
+                {
+                    name: "Inviting Rin",
+                    anchor: "./puzzles/superposition-rin/index.html",
+                    answer: "A"
                 },
             ],
             entanglement: [

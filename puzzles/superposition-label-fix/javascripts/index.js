@@ -5,11 +5,20 @@ const app = new Vue({
         level: 1,
         LEVELMAX: 4,
         text: {
-            password: "ANBCEFIJ"
+            password: "PLACEHOLDER"
         },
         answers: [
             ("1X3X5\n" +
-            "2X4X6").split("\n").map(x => x.split(""))
+            "2X4X6").split("\n").map(x => x.split("")),
+            ("1X5\n" +
+            "2X6\n" +
+            "34X").split("\n").map(x => x.split("")),
+            ("12X\n" +
+            "X34\n" +
+            "56X").split("\n").map(x => x.split("")),
+            ("X34X\n" +
+            "1256\n" +
+            "XXXX").split("\n").map(x => x.split("")),
         ],
         highlighted: [-1, -1],
         pairs: {
@@ -17,7 +26,9 @@ const app = new Vue({
             2: [[-1, -1], [-1, -1]],
             3: [[-1, -1], [-1, -1]],
         },
-        seed: -1
+        seed: -1,
+        correct: false,
+        wrongTimer: 0
     },
     computed: {
         curRows() {
@@ -69,6 +80,9 @@ const app = new Vue({
             if (this.isHighlighted(r, c)) {
                 return "yellow";
             }
+            if (this.threePairsFormed) {
+                return "grey";
+            }
             return "";
         },
         getLabelDisplay(r, c) {
@@ -80,7 +94,7 @@ const app = new Vue({
         },
         getCellDisplay(r, c) {
             if (this.level > this.LEVELMAX || this.seed == -1) {
-                return "?";
+                return "";
             }
             const cell = this.answers[this.level - 1][r - 1][c - 1];
             switch (cell) {
@@ -137,10 +151,51 @@ const app = new Vue({
                 }
                 this.highlighted = [-1, -1];
             }
+        },
+        resetSelection() {
+            for (let prop of Object.keys(this.pairs)) {
+                this.pairs[prop] = [[-1, -1], [-1, -1]];
+            }
+            this.highlighted = [-1, -1];
+        },
+        submit() {
+            if (this.isCorrect()) {
+                this.correct = true;
+            } else {
+                this.wrongTimer++;
+                setTimeout(() => {
+                    this.wrongTimer--;
+                }, 3000);
+            }
+            
+        },
+        isCorrect() {
+            for (let prop of Object.keys(this.pairs)) {
+                const pair = this.pairs[prop];
+                if (pair[0][0] === -1) {
+                    return false;
+                }
+                const grid = this.answers[this.level - 1];
+                const str1 = grid[pair[0][0] - 1][pair[0][1] - 1]; 
+                const str2 = grid[pair[1][0] - 1][pair[1][1] - 1];
+                
+                if (!["12", "21", "34", "43", "56", "65"].includes(str1 + str2)) {
+                    return false;
+                }
+            }
+            return true;
+        },
+        proceed() {
+            this.level++;
+            this.correct = false;
+            this.reset();
+            this.resetSelection();
+        },
+        resetGame() {
+            this.correct = false;
+            this.level = 1;
+            this.reset();
+            this.resetSelection();
         }
-    },
-    mounted() {
     }
 })
-
-// Suggested solve path: +11 => +5 => -2 => +5

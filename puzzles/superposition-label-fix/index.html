@@ -20,11 +20,12 @@
                     <ul>
                         <li>There are four levels in total.</li>
                         <li>Each level consists a package with three quantum balls.</li>
-                        <li>The three quantum balls are in a superposition state of two adjacent locations.</li>
+                        <li>The three quantum balls are in a superposition state of two <b>orthogonically adjacent</b> locations.</li>
                         <li>Your target is to restore the original states of the label.</li>
                         <li>You can open the package to gain information on the positions of the balls. 
                             After opening the package, you can reset the package back to the superposition states.</li>
                         <li>To label a ball, click on the two cells that a ball is in superposition state of.</li>
+                        <li>Clicking on a labelled cell will remove the connection.</li>
                         <li>Hint: Measure multiple times to determine the possible positions of the balls!</li>
                     </ul>
                 </div>
@@ -41,13 +42,13 @@
                                 <span class="box-label">Box</span>
                                 <table>
                                     <tr v-for="r in curRows">
-                                        <td v-for="c in curCols">
+                                        <td v-for="c in curCols" :class="{ unopened: seed === -1}">
                                             {{getCellDisplay(r, c)}}
                                         </td>
                                     </tr>
                                 </table>
                                 <div class="button-con">
-                                    <button @click="measure">Measure</button>
+                                    <button @click="measure">Open the box</button>
                                     <button @click="reset">Reset</button>
                                 </div>
                             </div>
@@ -61,13 +62,21 @@
                                         </td>
                                     </tr>
                                 </table>
+                                <div v-show="correct" class="right">
+                                    Correct! <button @click="proceed">Proceed</button>
+                                </div>
+                                <div class="button-con">
+                                    <button @click="resetSelection">Reset Selection</button>
+                                    <button @click="submit">Submit</button>
+                                </div>
+                                <span :class="{ 'invisible': wrongTimer == 0 }" class="wrong">Hmm... your label seems to be wrong.</span>
                             </div>
                         </div>
                     </template>
                     <div v-else="level > LEVELMAX">
                         Game complete!<br><br>
                         The password is: <span class="password">{{text.password}}</span>.<br>
-                        <button @click="reset">Play again</button>
+                        <button @click="resetGame">Play Again</button>
                     </div>
                 </div>
             </base-puzzle>
