@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Loading...</title>
+        <link rel="stylesheet" href="./stylesheets/styles.css">
+        <link rel="stylesheet" href="../../global/styles.css">
+    </head>
+    <body>
+        <div id="app">
+            <base-puzzle :title="title" class="puzzle">
+                <template v-slot:flavour-text>
+                    I lost the labels for these packages. Can you fix them for me?
+                </template>
+
+                <hr width="100%">
+
+                <div class="rules">
+                    Rules:<br>
+                    <ul>
+                        <li>There are four levels in total.</li>
+                        <li>Each level consists a package with a fixed number of quantum balls.</li>
+                        <li>It is given that all the quantum balls are in a superposition state of two different locations.</li>
+                        <li>Your target is to restore the original states of the label.</li>
+                        <li>You can open the package to gain information on the positions of the balls. 
+                            After opening the package, you can reset the package back to the superposition states.</li>
+                        <li>To label a ball, click on the two cells that a ball is in superposition state of.</li>
+                    </ul>
+                </div>
+                
+
+                <hr width="100%">
+
+                <div class="game">
+                </div>
+            </base-puzzle>
+        </div>
+    </body>
+    <script src="../../libraries/vue.js"></script>
+
+    <script src="../../global/BasePuzzle.js"></script>
+    <script src="javascripts/index.js"></script>
+</html>

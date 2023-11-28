@@ -3,7 +3,9 @@ const app = new Vue({
     data: {
         inputModel: "",
         solves: {
-            intro: [false, false, false]
+            intro: [true, true, true],
+            // intro: [false, false, false],
+            superposition: [false, false, false],
         },
         links: {
             intro: [
@@ -23,6 +25,19 @@ const app = new Vue({
                     answer: "SUPERPOSITION"
                 }
             ],
+            superposition: [
+                {
+                    name: "Missing Label",
+                    anchor: "./puzzles/superposition-label-fix/index.html",
+                    answer: "??????????????????????????????"
+                },
+            ],
+            entanglement: [
+
+            ],
+            chaos: [
+
+            ]
         }
         // links: [{
         //     name: "Dating simlator",
@@ -44,12 +59,15 @@ const app = new Vue({
         // }]
     },
     computed: {
-        unlockedIntros() {
+        calculatedIntros() {
             const intros = this.links.intro;
             const unlocked = []
             for (let i = 0; i < intros.length; i++) {
-                if (i === 0 || this.solves.intro[i - 1] === true) {
-                    unlocked.push(intros[i]);
+                if (i === 0 || this.solves.intro[i - 1] || this.solves.intro[i]) {
+                    unlocked.push({
+                        idx: i,
+                        obj: intros[i]
+                    });
                 }
             }
             return unlocked;
