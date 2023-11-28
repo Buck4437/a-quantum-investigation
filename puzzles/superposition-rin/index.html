@@ -10,37 +10,60 @@
         <div id="app">
             <base-puzzle :title="title" class="puzzle">
                 <template v-slot:flavour-text>
-                    Ayane's a hard one to crack, but with the proper questions, you can alter the possibilities...
+                    "I want to ask Rin out for a meal, but she always reject me..."
                 </template>
 
                 <hr width="100%">
 
                 <div class="intro">
                     <p>
-                        We might be inclined to think that a measurement is like weighting an object.<br>
-                        However, it is actually closer to asking a question.<br> 
-                        The result might not be defined before asking the question, but you will get an answer after asking it.<br>
+                        We might be inclined to think that a measurement is like weighting an object. 
+                        However, it is actually closer to asking a question.
                     </p>
 
                     <p>
-                        Maybe, asking out for a meal is like performing quantum measurement,<br>
-                        and the answer behaves like in a state of superposition.<br>
+                        The answer is like in a superposition state, 
+                        the person might not even have an answer before you ask the question!
+                        However, once you ask a question, you will get an answer after asking it.
+                    </p>
+
+                    <p>
+                        Maybe, if you doing something before asking the question, you can alter the possibilities...
+                    </p>
+
+                    <p>
+                        (This analogy is taken from the lecture notes.)
                     </p>
                 </div>
 
                 <hr width="100%">
 
+                <div class="rules">
+                    Rules:
+                    <ul>
+                        <li>The goal of this puzzle is to invite Rin for dinner.</li>
+                        <li>You can perform two actions to alter the probability: Comfort and Chatter</li>
+                        <li>Comfort increases the exponent by 7.</li>
+                        <li>Chatter multiplies the exponent by 2.</li>
+                        <li>Your target is to reach a probability of 100% (10^2 %).</li>
+                        <li>However, you will fail if the probability exceeds 100%.</li>
+                        <li>You can reset at any time using Rephrase.</li>
+                    </ul>
+                </div>
+
+                <hr width="100%">
+
                 <div class="game">
-                    <!-- <div v-if="loreText !== null" class="lore">
+                    <div v-if="loreText !== null" class="lore">
                         {{loreText}}
                     </div>
                     <div>
                         <button v-if="loreText !== null" @click="textId++" class="next">Next</button>
-                    </div> -->
-                    <div class="content" v-if="loreText === null || true">
+                    </div>
+                    <div class="content" v-if="loreText === null">
                         <div class="left">
-                            <div>Ayane's Answer: ??????</div>
-                            <div>Probability of yes: {{probability}}</div>
+                            <div>Rin's Answer: ??????</div>
+                            <div>Probability of acceptance: {{probability}}</div>
                         </div>
                         <div class="right">
                             <button v-for="move in moves" @click="playMove(move)" class="move-btn">{{move.name}}</button>

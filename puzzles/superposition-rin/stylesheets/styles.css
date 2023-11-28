@@ -6,6 +6,10 @@ body {
     text-align: left;
 }
 
+ul {
+    text-align: left;
+}
+
 .game {
     width: 100%;
     height: 400px;
@@ -35,15 +39,16 @@ body {
 .content {
     width: 100%;
     height: 100%;
+    display: flex;
 }
 
 .left, .right {
     width: calc(50% - 16px);
-    height: calc(100% - 16px);
     padding: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center ;
 }
 
 .left {

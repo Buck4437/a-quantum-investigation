@@ -2,61 +2,50 @@ const app = new Vue({
     el: "#app",
     data: {
         title: "Inviting Rin",
-        exponent: -18,
+        exponent: -12,
         collapsed: false,
         textId: 0,
         texts: [
-            "You want to ask Ayana out for a meal.",
-            "Professor Hiro has given you a secret weapon, a sensor that tells you the possibility of outcomes.",
-            "You thanked Professor Hiro, set the sensor to tell you that, if Ayana would accept your invitation to a meal.",
-            "You saw Ayana at the sidewalk, and you pointed the sensor to Ayane:",
-            "Probability: 0.0000000000000001%.",
-            "Wow. She must have hated you.",
-            "However, you have prepared an extra sets of manevours, to hopefully bump up the possibility of getting a yes.",
-            "After all, the answer is not defined before you ask her out!",
-            "You are pretty sure that these manevours will only multiply or divide probabilities. "
-            + "You aren't sure how well the manevours performs though. Maybe you will need to note them down somewhere.",
-            "Use these manevours carefully, and tip the balance to your favour.",
-            "But don't tip the balance too much, if the probability exceeds 100% (or is too low), Ayane will become suspicious and leave!",
-            "In case you failed though, you can reset by begging to Professor Hiro. He has a time machine that can reset everything. Probably."
+            "Stephen will be having a dinner with his friends. He wants to invite Rin to the dinner.",
+            "However, for some unknown reason, Rin has rejected him three times in a row.",
+            "As a result, Stephen has developed a sensor that tells you the rough possibility of outcomes.",
+            "'These sensors aren't perfect,' he said.",
+            "'Superposition states cannot be perfectly duplicated if we don't know its probabilities.'",
+            "'All I have is a rough estimation in terms of exponent, but I hope it is good enough.'",
+            "He sets the sensor to tell you whether Rin will accept. After that, you head to Rin's house.",
+            "After Rin opens the door, she invites you in, and you two sit on the couch.",
+            "You secretly pointed the sensor to Rin:",
+            "Probability of success: 10^-12 %.",
+            "Wow.",
+            "Let's try to alter the probability."
         ],
+
+        // Solve path: -12 -> -5 -> -10 -> -3 -> -6 -> 1 -> 2
         moves: [
             {
-                name: "Favourite food",
+                name: "Comfort",
                 effect: (vueObj) => {
-                    vueObj.exponent += 5;
+                    vueObj.exponent += 7;
                 }
             },
             {
-                name: "Talk about Quantum Mechanics",
+                name: "Chatter",
                 effect: (vueObj) => {
-                    vueObj.exponent += 11;
+                    vueObj.exponent *= 2;
                 }
             },
             {
-                name: "Tell a joke",
+                name: "Rephrase (Reset)",
                 effect: (vueObj) => {
-                    vueObj.exponent -= 2;
+                    vueObj.exponent = -12;
                 }
             },
             {
-                name: "Act dumb",
-                effect: (vueObj) => {
-                    vueObj.exponent -= 7;
-                }
-            },
-            {
-                name: "Ask for a meal (COLLAPSE STATE)",
+                name: "Ask (COLLAPSE STATE)",
                 effect: (vueObj) => {
                     vueObj.measure();
                 }
             },
-            {
-                name: "Reset",
-                effect: (vueObj) => {
-                    vueObj.reset();
-                }
-            }
         ]
     },
     computed: {
@@ -67,12 +56,7 @@ const app = new Vue({
             return this.texts[this.textId];
         },
         probability() {
-            const realExp = this.exponent + 2;
-            if (this.expoenent < -16) {
-                return `0% (10^${realExp}%)`;
-            }
-            const number = 10 ** realExp;
-            return `${number.toFixed(18).replace(/\.?0+$/,"")}% (10^${realExp}%)`
+            return `10^${this.exponent} %`;
         }
     },
     methods: {
