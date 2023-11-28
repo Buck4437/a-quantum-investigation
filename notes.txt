@@ -17,12 +17,15 @@ Overall structure:
 - Assets
 
 Superposition:
-- Three puzzles (?)
-- Label 1, Ayane (or lottery), Quantum 24 (correct regardless of state), Quantum thief (?)
+- Quantum 24 (correct regardless of state), Quantum thief (?)
 - Quantum Card Game?
 - Make words, but you need to use quantum letters
 
 Missing Label:
+- Add password
+
+Inviting Rin:
+- Add assets
 - Add password
 
 Alice and Bob's Entanglement

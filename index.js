@@ -6,6 +6,11 @@ const app = new Vue({
             intro: [true, true, true],
             // intro: [false, false, false],
             superposition: [false, false, false],
+            interlude: [false],
+            entanglement: [false, false, false],
+            interlude2: [false, false],
+            chaos: [false, false, false, false, false, false],
+            meta: [false]
         },
         links: {
             intro: [
@@ -27,41 +32,98 @@ const app = new Vue({
             ],
             superposition: [
                 {
-                    name: "Missing Label",
-                    anchor: "./puzzles/superposition-label-fix/index.html",
-                    answer: "A"
-                },
-                {
                     name: "Inviting Rin",
                     anchor: "./puzzles/superposition-rin/index.html",
                     answer: "A"
                 },
+                {
+                    name: "Missing Label",
+                    anchor: "./puzzles/superposition-label-fix/index.html",
+                    answer: "B"
+                },
+                {
+                    name: "Interference (WIP)",
+                    anchor: "./puzzles/superposition-label-fix/index.html",
+                    answer: "C"
+                },
+            ],
+            interlude: [
+                {
+                    name: "Second Glimpse into Quantum (WIP)",
+                    anchor: "./puzzles/superposition-label-fix/index.html",
+                    answer: "D"
+                },
             ],
             entanglement: [
-
+                {
+                    name: "Alice and Bob's Entanglement",
+                    anchor: "./puzzles/entanglement-alice-bob/index.html",
+                    answer: "E"
+                },
+                {
+                    name: "Missing Label 2 (WIP)",
+                    anchor: "./puzzles/superposition-rin/index.html",
+                    answer: "F"
+                },
+                {
+                    name: "Quantum Arithmetic (WIP)",
+                    anchor: "",
+                    answer: "G"
+                },
+            ],
+            interlude2: [
+                {
+                    name: "Entangled (WIP)",
+                    anchor: "./puzzles/superposition-label-fix/index.html",
+                    answer: "H"
+                },
+                {
+                    name: "Puzzles (WIP)",
+                    anchor: "./puzzles/superposition-label-fix/index.html",
+                    answer: "H"
+                },
             ],
             chaos: [
+                {
+                    name: "A",
+                    anchor: "./puzzles/entanglement-alice-bob/index.html",
+                    answer: "I"
+                },
+                {
+                    name: "A",
+                    anchor: "./puzzles/entanglement-alice-bob/index.html",
+                    answer: "I"
+                },
+                {
+                    name: "A",
+                    anchor: "./puzzles/entanglement-alice-bob/index.html",
+                    answer: "J"
+                },
+                {
+                    name: "A",
+                    anchor: "./puzzles/entanglement-alice-bob/index.html",
+                    answer: "J"
+                },
+                {
+                    name: "A",
+                    anchor: "./puzzles/entanglement-alice-bob/index.html",
+                    answer: "K"
+                },
+                {
+                    name: "A",
+                    anchor: "./puzzles/entanglement-alice-bob/index.html",
+                    answer: "K"
+                },
 
+            ],
+            meta: [
+                {
+                    name: "Farewell (WIP)",
+                    anchor: "./puzzles/entanglement-alice-bob/index.html",
+                    answer: "L"
+                },
             ]
         }
-        // links: [{
-        //     name: "Dating simlator",
-        //     anchor: "./puzzles/superposition-ayane/index.html"
-        // },
-        // {
-        //     name: "Quantum guess game (idk)",
-        //     anchor: "./puzzles/entanglement-alice-bob/index.html"
-        // },
-        // {
-        //     name: "Entanglement 1-1",
-        //     anchor: "./puzzles/entanglement-fragment-1/index.html",
-        //     answer: "106395"
-        // },
-        // {
-        //     name: "Entanglement 1-2",
-        //     anchor: "./puzzles/entanglement-fragment-2/index.html",
-        //     answer: "106395"
-        // }]
     },
     computed: {
         calculatedIntros() {
@@ -76,6 +138,15 @@ const app = new Vue({
                 }
             }
             return unlocked;
+        },
+        unlockedInterlude() {
+            return this.solves.superposition.map(x => x ? 1 : 0).reduce((a, b) => a + b, 0) >= 2;
+        },
+        unlockedInterlude2() {
+            return this.solves.entanglement.map(x => x ? 1 : 0).reduce((a, b) => a + b, 0) >= 2;
+        },
+        unlockedMeta() {
+            return this.solves.chaos.map(x => x ? 1 : 0).reduce((a, b) => a + b, 0) >= 4;
         }
     },
     methods: {
