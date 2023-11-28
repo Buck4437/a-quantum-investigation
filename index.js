@@ -119,8 +119,8 @@ const app = new Vue({
             meta: [
                 {
                     name: "Farewell (WIP)",
-                    anchor: "./puzzles/entanglement-alice-bob/index.html",
-                    answer: "L"
+                    anchor: "./puzzles/finale/index.html",
+                    answer: "ANYTIME ANYWHERE"
                 },
             ]
         }
@@ -151,7 +151,7 @@ const app = new Vue({
     },
     methods: {
         submit() {
-            const answer = this.inputModel.trim().toUpperCase();
+            const answer = this.inputModel.trim().toUpperCase().replaceAll(" ", "")
 
             if (answer === "") {
                 return;
@@ -164,7 +164,7 @@ const app = new Vue({
                 const puzzles = this.links[key];
                 for (let i = 0; i < puzzles.length; i++) {
                     const puzzle = puzzles[i];
-                    if (answer === puzzle.answer) {
+                    if (answer === puzzle.answer.replaceAll(" ", "")) {
                         if (this.solves[key][i] === true) {
                             alert("You have already noted this down.");
                             return;
