@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Loading...</title>
+        <link rel="stylesheet" href="../../global/styles.css">
+        <link rel="stylesheet" href="./stylesheets/styles.css">
+    </head>
+    <body>
+        <div id="app">
+            <base-puzzle :title="title" class="puzzle">
+                <template v-slot:flavour-text>
+                    "???"
+                </template>
+
+                <hr width="100%">
+
+                <div class="intro">
+                    <p>
+                        Quantum objects exhibit a property called "Quantum Interference".
+                        When you let them interact with one another, their probabilities will change:
+                        some states might become more likely, other states might disappear completely.
+                    </p>
+
+                    <p>
+                        This is analogous to water waves. When you throw two rocks at a lake, ripples are formed.
+                        You may notice that at some point, the ripples would cancel out each other.
+                        Similar things happen to quantum objects when they undergo quantum interference.
+                    </p>
+
+                    <p>
+                        What is it useful for? If we have some superposition states that we want to avoid, we can try to 
+                        remove these states before measurements. This allows us to get more favourable measurement, 
+                        and is very useful in quantum computers.
+                    </p>
+                </div>
+
+                <hr width="100%">
+
+                <div class="rules">
+                    Rules:<br>
+                    <ul>
+                        <li>There are ? levels in total.</li>
+                        <li>In each level, there is a ball in a superposition state.</li>
+                        <li>Your target is to make use of quantum interference to cancel out the red states, such that only the green state remain.</li>
+                        <li>Each state of the ball comes with a number. There are two types of move: normal and interfere.</li>
+                        <li>Normal moves change the numbers of all states according to the given rule.</li>
+                        <li>Interfere will remove all <b>conjugate pairs</b>, 
+                            that is, if there exist a pair of numbers with state X and -X, interfere will remove this pair of number.
+                            (Note that red states will priority with interfering with green state.)</li>
+                        <li>If only the green state remains, you will be able to measure it and proceed to the next level!</li>
+                    </ul>
+                </div>
+                
+
+                <hr width="100%">
+
+                <div class="game">
+                    <template v-if="currentLevel <= LEVELMAX">
+                        <div class="level-display">Level {{currentLevel}}</div>
+
+                        <div class="ball-con">
+                            <div v-for="ball in remainingBalls" class="ball" :class="ball.type">{{ball.value}}</div>
+                        </div>
+                    </template>
+                    <div v-else="currentLevel > LEVELMAX">
+                        Task completed!<br><br>
+                        As a reference, you jotted down <span class="password">{{password}}</span> in your memo.<br>
+                        <button @click="resetGame">Play Again</button>
+                    </div>
+                </div>
+            </base-puzzle>
+        </div>
+    </body>
+    <script src="../../libraries/vue.js"></script>
+
+    <script src="../../global/BasePuzzle.js"></script>
+    <script src="javascripts/index.js"></script>
+</html>

@@ -43,7 +43,7 @@ const app = new Vue({
                 },
                 {
                     name: "Interference (WIP)",
-                    anchor: "./puzzles/superposition-label-fix/index.html",
+                    anchor: "./puzzles/superposition-interference/index.html",
                     answer: "C"
                 },
             ],
@@ -85,32 +85,32 @@ const app = new Vue({
             ],
             chaos: [
                 {
-                    name: "A",
+                    name: "I",
                     anchor: "./puzzles/entanglement-alice-bob/index.html",
                     answer: "I"
                 },
                 {
-                    name: "A",
+                    name: "I",
                     anchor: "./puzzles/entanglement-alice-bob/index.html",
                     answer: "I"
                 },
                 {
-                    name: "A",
+                    name: "J",
                     anchor: "./puzzles/entanglement-alice-bob/index.html",
                     answer: "J"
                 },
                 {
-                    name: "A",
+                    name: "J",
                     anchor: "./puzzles/entanglement-alice-bob/index.html",
                     answer: "J"
                 },
                 {
-                    name: "A",
+                    name: "K",
                     anchor: "./puzzles/entanglement-alice-bob/index.html",
                     answer: "K"
                 },
                 {
-                    name: "A",
+                    name: "K",
                     anchor: "./puzzles/entanglement-alice-bob/index.html",
                     answer: "K"
                 },
