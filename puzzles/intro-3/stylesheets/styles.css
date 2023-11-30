@@ -22,6 +22,7 @@ img {
 }
 
 .label {
+    margin: 16px;
     font-size: 50px;
     width: 75px;
     height: 75px;
@@ -52,7 +53,7 @@ img {
     100% { color: red; }
 }
 
-.experiment {
+.experiment, .experiment2, .experiment3 {
     text-align: center;
 }
 
@@ -71,11 +72,44 @@ td {
     border: 2px solid white;
 }
 
-.experiment2 td {
-    border: 2px solid rgb(99, 99, 252);
-}
-
 button {
     width: 150px;
     height: 55px;
 }
+
+.label2 {
+    margin: 16px;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid white;
+    padding: 8px;
+
+    -webkit-animation: smallLarge 4s ease infinite;
+}
+
+.experiment3 td {
+    width: 80px;
+    height: 80px;
+}
+
+@-webkit-keyframes smallLarge {  
+    0% { font-size: 20px; } 
+    15% { font-size: 20px; }
+    50% { font-size: 50px; }
+    65% { font-size: 50px; }
+    100% { font-size: 20px; }
+}
+
+.big {
+    font-size: 50px;
+}
+
+.small {
+    font-size: 20px;
+}
+

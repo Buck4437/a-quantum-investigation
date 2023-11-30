@@ -83,39 +83,6 @@ const app = new Vue({
                     answer: "H"
                 },
             ],
-            chaos: [
-                {
-                    name: "I",
-                    anchor: "./puzzles/entanglement-alice-bob/index.html",
-                    answer: "I"
-                },
-                {
-                    name: "I",
-                    anchor: "./puzzles/entanglement-alice-bob/index.html",
-                    answer: "I"
-                },
-                {
-                    name: "J",
-                    anchor: "./puzzles/entanglement-alice-bob/index.html",
-                    answer: "J"
-                },
-                {
-                    name: "J",
-                    anchor: "./puzzles/entanglement-alice-bob/index.html",
-                    answer: "J"
-                },
-                {
-                    name: "K",
-                    anchor: "./puzzles/entanglement-alice-bob/index.html",
-                    answer: "K"
-                },
-                {
-                    name: "K",
-                    anchor: "./puzzles/entanglement-alice-bob/index.html",
-                    answer: "K"
-                },
-
-            ],
             meta: [
                 {
                     name: "Farewell (WIP)",
@@ -141,9 +108,6 @@ const app = new Vue({
         },
         unlockedInterlude() {
             return this.solves.superposition.map(x => x ? 1 : 0).reduce((a, b) => a + b, 0) >= 2;
-        },
-        unlockedInterlude2() {
-            return this.solves.entanglement.map(x => x ? 1 : 0).reduce((a, b) => a + b, 0) >= 2;
         },
         unlockedMeta() {
             return this.solves.chaos.map(x => x ? 1 : 0).reduce((a, b) => a + b, 0) >= 4;

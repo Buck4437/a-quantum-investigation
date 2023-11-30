@@ -19,7 +19,7 @@
 
                     <div class="label-con">
                         <div class="label">
-                            <span>O</span>
+                            <span>◯</span>
                         </div>
                     </div>
                     
@@ -28,14 +28,14 @@
                     </p>
 
                     <p>
-                        "Yes, but actually no. Try to open them and see what you get."                        
+                        "Yes, but these aren't your typical lootboxes. Try to open them and see what you get."                        
                     </p>
                     
                     <div class="experiment">
                         <table>
                             <tr v-for="i in 4">
                                 <td v-for="j in 4">
-                                    <span v-if="seed != -1" :class="classOf(i, j)">O</span>
+                                    <span v-if="seed != -1" :class="classOf(i, j)">◯</span>
                                     <span v-else>?</span>
                                 </td>
                             </tr>
@@ -46,22 +46,28 @@
 
                     <template v-if="seed != -1">
                         <p>
-                            "These look like ordinary lootboxes, right?" He removes the opened packages on the table, 
+                            He removes the opened packages on the table, 
                             and prepares a new set of lootbox with the exact same labels.
-                            "Now look at what happens when I do this." He pulls out a mystical device from his pocket,
+                            "Now look at what happens when I do this." 
+                        </p>
+
+                        <p>
+                            He pulls out a mystical device from his pocket,
                             points it at the packages, and presses a button. 
                             The device radiates a strong blue light at the packages.
                         </p>
 
+                        <img src="src/light.png">
+
                         <p>
-                            "Now, try to open the packages again."
+                            "Try to open the packages again."
                         </p>
 
                         <div class="experiment experiment2">
                             <table>
                                 <tr v-for="i in 4">
                                     <td v-for="j in 4">
-                                        <span v-if="seed2 != -1" class="blue">O</span>
+                                        <span v-if="seed2 != -1" class="blue">◯</span>
                                         <span v-else>?</span>
                                     </td>
                                 </tr>
@@ -79,7 +85,7 @@
 
                         <p>
                             "These aren't merely lootboxes, these are quantum lootboxes. 
-                            In fact, the objects are said to be in a <span class="password">SUPERPOSITION</span> state."
+                            The balls are in a <span class="password">SUPERPOSITION</span> state."
                         </p>
 
                         <p>
@@ -94,24 +100,50 @@
                         </p>
 
                         <p>
-                            "When you open the box, you perform what is referred to as a 'measurement'. 
+                            "The opening of the box is called a 'measurement'. 
                             When you perform a measurement, the ball's state will 'collapse'. 
-                            It will become either red or blue according to the probability.
-                            However, as long as you don't perform any measurement, the balls will
-                            stay in the <span class="password">SUPERPOSITION</span> state."
+                            It will become either red or blue according to the probability."
                         </p>
 
                         <p>
-                            "This allows you to alter the chance of getting red or blue before opening it, like using my device
-                            - You can't do this with normal lootboxes!"
+                            "What is great about it is that, you can alter the chance of getting red or blue before opening it, 
+                            like using my device here. Can't do this with normal lootboxes!"
                         </p>
 
                         <p>
-                            "Of course, <span class="password">SUPERPOSITION</span> states aren't just limited to colours. 
-                            A quantum object can be in a <span class="password">SUPERPOSITION</span> states of multiple sizes,
+                            "Of course, <span class="password">SUPERPOSITION</span> states aren't just limited to colours." 
+                            He removed some more packages from the shelves. Their labels look like this:
+                        </p>
+
+                        <div class="label-con">
+                            <div class="label2">
+                                <span>◯</span>
+                            </div>
+                        </div>
+
+                        <p>
+                            "This is a different type of package. Try to open them."
+                        </p>
+
+                        <div class="experiment3">
+                            <table>
+                                <tr v-for="i in 4">
+                                    <td v-for="j in 4">
+                                        <span v-if="seed3 != -1" :class="classOf(i, j, 3)">◯</span>
+                                        <span v-else>?</span>
+                                    </td>
+                                </tr>
+                            </table>
+        
+                            <button @click="openAll(3)">Open all</button>
+                        </div>
+                    </template>
+
+                    <template v-if="seed3 != -1">
+                        <p>
+                            "A quantum object can be in a <span class="password">SUPERPOSITION</span> states of multiple sizes,
                             or multiple locations, or even moving at multiple speeds at multiple directions. 
-                            This enables so much possibility with quantum mechanics. 
-                            This is why I decided to invest in quantum technologies."
+                            This enables so much possibility with quantum mechanics!"
                         </p>
 
                         <p>
