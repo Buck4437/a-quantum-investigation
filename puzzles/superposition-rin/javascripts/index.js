@@ -2,130 +2,137 @@ const app = new Vue({
     el: "#app",
     data: {
         title: "Inviting Rin",
-        exponent: -10,
-        default: [-10, -1, null],
+        prob: 1,
         phase: 1,
-        MAXPHASE: 2,
+        MAXPHASE: 1,
         actionText: "",
         textId: 0,
         password: "AWDIGEIFGHEIFGFEFEFJ)OWEFHOWEIFLNEWF",
-        texts: [
+        text1: [
             "Stephen will be having a dinner with his friends. He wants to invite Rin to the dinner.",
             "However, for some unknown reason, Rin has rejected him three times in a row.",
-            "As a result, Stephen has developed a sensor that tells you the rough possibility of outcomes.",
-            "'These sensors aren't perfect,' he said.",
-            "'Superposition states cannot be perfectly duplicated if we don't know its probabilities.'",
-            "'All I have is a rough estimation in terms of exponent, but I hope it is good enough.'",
-            "He sets the sensor to tell you whether Rin will accept. After that, you head to Rin's house.",
-            "After Rin opens the door, she invites you in, and you two sit on the couch.",
-            "You secretly pointed the sensor to Rin:",
-            "Probability of success: 10^-12 %.",
+            "'I wish I have a device similar to the one I have for packages,' he said.",
+            "'But all I have is a sensor that tells you the rough possibility of outcomes.'",
+            "'These sensors aren't perfect, but I hope it is good enough,' he said.",
+            "After configuring the sensor, you head to Rin's house.",
+            "Rin opens the door and invites you in. You two sit on the couch.",
+            "You take a look at the sensor:",
+            "Probability of success: 1%.",
             "Wow.",
             "Let's try to alter the probability."
         ],
         text2: [
             "You invited Rin for dinner.",
-            "'Hmm. I think-' before she can finish her sentence, you hear a knock from the door.",
-            "'Please wait,' Rin said.",
-            "She heads outside the house. Fifteen minutes later, she comes back to the room.",
-            "She doesn't look good.",
-            "You pointed the sensor to Rin:",
-            "Probability of success: 10^-10 %.",
-            "Something bad must have happened.",
-            "'What's the matter?' You decide to switch the topic. You will need to alter the probability once again."
-        ],
-        text3: [
-            "You invited Rin for dinner again.",
             "'Yeah, I can come over,' she said.",
             "'Great, I will see you at Stephen's hosue then.'",
             "After some effort, you have finally shifted the probability to your favour."
         ],
 
-        // Phase 1: -10 -> -3 -> -6 -> 1 -> 2
-        // Phase 2: -1 -> -2 -> -4 -> -17 -> -10 -> -3 -> -6 -> 1 -> 2
+        // Suggested solution: 1 -> 8 -> 12 -> 18 -> 27 -> 40 -> 60 -> 67 -> 100
         moves: [
             {
                 name: "Converse (+7)",
-                unlocks: () => true,
                 effect: (vueObj) => {
-                    if (vueObj.exponent != null) {
-                        vueObj.exponent += 7;
-                        vueObj.actionText = "You converse with Rin.";
-                    }
+                    vueObj.prob += 7;
+                    vueObj.actionText = "You converse with Rin.";
                 }
             },
             {
-                name: "Chatter (x2)",
-                unlocks: () => true,
+                name: "Chatter (x1.5)",
                 effect: (vueObj) => {
-                    if (vueObj.exponent != null) {
-                        vueObj.exponent *= 2;
-                        vueObj.actionText = "You chatter with Rin.";
-                    }
+                    vueObj.prob = Math.floor(vueObj.prob + vueObj.prob / 2);
+                    vueObj.actionText = "You chatter with Rin.";
                 }
             },
             {
-                name: "Clack (-13)",
-                unlocks: phase => phase >= 2,
+                name: "Reset",
                 effect: (vueObj) => {
-                    if (vueObj.exponent != null) {
-                        vueObj.exponent -= 13;
-                        vueObj.actionText = "You clack at Rin.";
-                    }
-                }
-            },
-            {
-                name: "Rephrase (Reset)",
-                unlocks: () => true,
-                effect: (vueObj) => {
-                    vueObj.exponent = vueObj.default[vueObj.phase - 1];
-                    vueObj.actionText = "You rephased. The probability has been reset.";
+                    vueObj.prob = 1;
+                    vueObj.actionText = "";
                 }
             }
         ]
     },
     computed: {
-        filteredMoves() {
-            return this.moves.filter(x => x.unlocks(this.phase))
-        },
         loreText() {
             switch (this.phase) {
                 case 1:
-                    if (this.textId >= this.texts.length) {
+                    if (this.textId >= this.text1.length) {
                         return null;
                     }
-                    return this.texts[this.textId];
+                    return this.text1[this.textId];
                 case 2:
                     if (this.textId >= this.text2.length) {
                         return null;
                     }
                     return this.text2[this.textId];
-                case 3:
-                    if (this.textId >= this.text3.length) {
-                        return null;
-                    }
-                    return this.text3[this.textId];
             }
         },
         probability() {
-            if (this.exponent === null) {
-                return `0%`;
-            }
-            return `10^${this.exponent} %`;
+            return `${this.prob} %`;
+        }
+    },
+    watch: {
+        prob() {
+            this.repaint();
+        },
+        loreText() {
+            this.repaint();
         }
     },
     methods: {
+        repaint() {
+            // Code modified from https://codepen.io/alsheuski/pen/eJNwNX
+            const center = 100, radius = 70;
+
+            const c = this.$refs.canvas;
+
+            if (c != null && c != undefined) {
+                const ctx = c.getContext("2d");
+                ctx.clearRect(0, 0, c.width, c.height); 
+
+                const grad = ctx.createLinearGradient(0, center - radius, 0, center + radius);
+                grad.addColorStop(0, "red");
+                grad.addColorStop(1, "yellow");
+
+                
+                const grad2 = ctx.createLinearGradient(0, center - radius, 0, center + radius);
+                grad2.addColorStop(0, "lime");
+                grad2.addColorStop(1, "yellow");
+
+                ctx.beginPath();
+                ctx.arc(center, center, radius, 0, 2 * Math.PI, false);
+                ctx.lineWidth = 20;
+                ctx.strokeStyle = "#444444";
+                ctx.stroke();
+
+                const angle = 1.5 * Math.PI + this.prob / 50 * Math.PI;
+
+                ctx.beginPath();
+                ctx.arc(center, center, radius, 1.5 * Math.PI, Math.min(2.5 * Math.PI, angle), false);
+                ctx.strokeStyle = grad;
+                ctx.lineWidth = 20;
+                ctx.stroke();
+
+                if (angle > 2.5 * Math.PI) {
+                    ctx.beginPath();
+                    ctx.arc(center, center, radius, 2.5 * Math.PI, angle, false);
+                    ctx.strokeStyle = grad2;
+                    ctx.lineWidth = 20;
+                    ctx.stroke();
+                }
+            }
+            
+        },
         ask() {
             this.actionText = "";
             this.phase++;
             this.textId = 0;
-            this.exponent = this.default[this.phase - 1];
         },
         playMove(move) {
             move.effect(this);
-            if (this.exponent > 2) {
-                this.actionText = "The exponent is too high. Rin is suspicious at your behaviour."
-                this.exponent = null;
+            if (this.prob > 100) {
+                this.prob = 1;
             }
         },
         progressText() {
@@ -134,7 +141,7 @@ const app = new Vue({
         resetGame() {
             this.phase = 1;
             this.textId = 0;
-            this.exponent = this.default[0];
+            this.prob = 1;
         }
     }
 })

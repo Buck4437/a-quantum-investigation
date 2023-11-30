@@ -28,7 +28,8 @@
                     </p>
 
                     <p>
-                        Maybe, if you doing something before asking the question, you can alter the possibilities...
+                        Just like how you can change the states of balls in lootboxes, 
+                        if you perform the right moves, maybe you can change the state of the answer before asking...
                     </p>
 
                     <p>
@@ -43,35 +44,42 @@
                     <ul>
                         <li>The goal of this puzzle is to invite Rin for dinner.</li>
                         <li>You can perform two actions to alter the probability: Converse and Chatter</li>
-                        <li>Converse increases the exponent by 7.</li>
-                        <li>Chatter multiplies the exponent by 2.</li>
-                        <li>A third action, Clack, will be unlocked later in the game. It subtracts the exponent by 13.</li>
-                        <li>Your target is to reach a probability of 100% (10^2 %).</li>
-                        <li>However, you will fail if the probability ever exceeds 100%.</li>
-                        <li>You can reset at any time using Rephrase.</li>
+                        <li>Converse increases the probability by 7.</li>
+                        <li>Chatter multiplies the probability by 1.5, rounded down.</li>
+                        <li>Your target is to reach a probability of 100%.</li>
+                        <li>However, the probability will be reset to zero if it exceeds 1%.</li>
+                        <li>You can also reset at any time.</li>
                     </ul>
                 </div>
 
                 <hr width="100%">
 
+                <img src="src/rin.png" width="400" height="400"><br><br>
+
                 <div class="game">
-                    <div v-if="loreText !== null" class="lore">
-                        {{loreText}}
-                    </div>
-                    <div>
-                        <button v-if="loreText !== null" @click="textId++" class="next">Next</button>
-                    </div>
-                    <div class="content" v-if="loreText === null && phase <= MAXPHASE">
+                    <template v-if="loreText !== null">
+                        <div class="lore">
+                            {{loreText}}
+                        </div>
+                        <div>
+                            <button @click="textId++" class="next">Next</button>
+                        </div>
+                    </template>
+                    <div class="content" v-show="loreText === null && phase <= MAXPHASE">
                         <div class="left">
-                            <div>Probability of acceptance: {{probability}}</div>
+                            <div class="sensor">
+                                <div class="probability">{{probability}}</div>
+                                <canvas ref="canvas" width="200" height="200"></canvas>
+                            </div>
+                            <div>Probability of acceptance</div>
                             <span>{{actionText}}</span>
                         </div>
                         <div class="right">
-                            <button v-for="move in filteredMoves" @click="playMove(move)" class="move-btn">{{move.name}}</button>
-                            <button v-if="exponent == 2" class="move-btn" @click="ask">Ask for a meal</button>
+                            <button v-for="move in moves" @click="playMove(move)" class="move-btn">{{move.name}}</button>
+                            <button v-if="prob === 100" class="move-btn" @click="ask">Ask for a meal</button>
                         </div>
                     </div>
-                    <div v-if="loreText === null && phase > MAXPHASE">
+                    <div v-if="loreText === null && phase > MAXPHASE" class="end">
                         Task completed!<br><br>
                         As a reference, you jotted down <span class="password">{{password}}</span> in your memo.<br><br>
                         <button @click="resetGame">Play Again</button>
