@@ -17,8 +17,12 @@ Overall structure:
 
 Superposition:
 - Quantum 24 (correct regardless of state), Quantum thief (?)
-- Quantum Card Game?
-- Make words, but you need to use quantum letters
+- Quantum Card Game
+
+Unstable Crate:
+- Add password
+- Add asssets
+- Add animation when you measure device (make waveform goes whooooom)
 
 Missing Label:
 - Add password

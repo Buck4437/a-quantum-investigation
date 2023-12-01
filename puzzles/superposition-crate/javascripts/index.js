@@ -26,11 +26,14 @@ const waveFunctions = {
 }
 
 const waveComponent = Vue.component("wave-diagram", {
+    data() {
+        return {
+            timer: 0
+        }
+    },
     props: {
         mode: Number,
-        // 1 to 10
         freq: Number,
-        // -1 to 1, for y axis?
         colour: String,
         update: Number,
         inverted: Boolean
@@ -83,6 +86,9 @@ const waveComponent = Vue.component("wave-diagram", {
         } 
     },
     mounted() {
+        // setInterval(() => {
+        //     if (this.timer >)
+        // }, 50);
         this.repaint();
     },
     template: `
@@ -103,6 +109,7 @@ const app = new Vue({
         invertedMode: false,
         input: {mode: 1, freq: 1},
         updateBit: 0,
+        solved: {con: false, des: false},
 
         answers: [
             null,
@@ -152,9 +159,25 @@ const app = new Vue({
         }
     },
     methods: {
-        advanceStory() {
-            this.actionText = "";
+        activate() {
+            if (!this.solved.con) {
+                const absDiff = Math.abs(this.parsedInput.freq - this.currentAnswers.con.freq);
+                if (this.parsedInput.mode === this.currentAnswers.con.mode && absDiff <= 0.3) {
+                    this.solved.con = true;
+                }
+            }
+
+            if (!this.solved.des) {
+                const absDiff = Math.abs(this.parsedInput.freq - this.currentAnswers.des.freq);
+                if (this.parsedInput.mode === this.currentAnswers.des.mode && absDiff <= 0.3) {
+                    this.solved.des = true;
+                }
+            }
+        },
+        advance() {
             this.phase++;
+            this.solved.con = false;
+            this.solved.des = false;
         },
         progressText() {
             textId++;

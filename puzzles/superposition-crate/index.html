@@ -43,14 +43,14 @@
                         <li>Each quantum crate is in a superposition state of stable and unstable. They are represented by waveforms.</li>
                         <li>There are two things you need to accomplish: amplifying the stable state, and cancelling the unstable state.</li>
                         <li>To amplify the stable state, calibrate the device such that its waveform matches that of the stable state.</li>
-                        <li>To cancel the unstable state, use inverted mode, and calibrate the device such that its waveform is the <b>inversion</b> of the waveform of the unstable state.</li>
+                        <li>To cancel the unstable state, calibrate the device such that its waveform is the <b>inversion</b> of the waveform of the unstable state.</li>
                     </ul>
                 </div>
 
                 <hr width="100%">
 
                 <div class="game">
-                    <div v-if="loreText !== null" class="content">
+                    <div v-if="loreText !== null" class="text-content">
                         <div class="lore">
                             {{loreText}}
                         </div>
@@ -58,44 +58,69 @@
                             <button @click="textId++" class="next">Next</button>
                         </div>
                     </div>
-                    <div v-if="loreText === null && phase > MAXPHASE" class="end" class="content">
-                        Task completed!<br><br>
-                        As a reference, you jotted down <span class="password">{{password}}</span> in your memo.<br><br>
+                    <div v-if="loreText === null && phase > MAXPHASE" class="text-content">
+                        <div>  
+                            Task completed!<br><br>
+                            As a reference, you jotted down <span class="password">{{password}}</span> in your memo.<br><br>
+                        </div>
                         <button @click="resetGame">Play Again</button>
                     </div>
 
                     <div v-show="loreText === null && phase <= MAXPHASE">
-                        <wave-diagram :mode="currentAnswers.con.mode" 
-                                      :freq="currentAnswers.con.freq" 
-                                      colour="white" 
-                                      :update="updateBit" 
-                                      :inverted="false"></wave-diagram>
+                        <div>
+                            Box {{phase}}
+                        </div>
+                        <div class="display">
+                            <div class="left">
+                                <div :class="{'green': solved.con}">
+                                    Stable State
+                                </div>
+        
+                                <wave-diagram :mode="currentAnswers.con.mode" 
+                                            :freq="currentAnswers.con.freq" 
+                                            colour="white" 
+                                            :update="updateBit" 
+                                            :inverted="false"></wave-diagram>
+        
+                                <div :class="{'green': solved.des}">
+                                    Unstable State
+                                </div>
+                                    
+                                <wave-diagram :mode="currentAnswers.des.mode" 
+                                            :freq="currentAnswers.des.freq" 
+                                            colour="white" 
+                                            :update="updateBit" 
+                                            :inverted="true"></wave-diagram>
+                                    
+                            </div>
                             
-                        <wave-diagram :mode="currentAnswers.des.mode" 
-                                      :freq="currentAnswers.des.freq" 
-                                      colour="white" 
-                                      :update="updateBit" 
-                                      :inverted="false"></wave-diagram>
                             
-                        <wave-diagram :mode="parsedInput.mode" 
-                                      :freq="parsedInput.freq" 
-                                      colour="blue" 
-                                      :update="updateBit" 
-                                      :inverted="invertedMode"></wave-diagram>
+                            <div class="right">
+                                <div>
+                                    Device Display
+                                </div>
 
-                        <div>
-                            Inverted mode: <input v-model="invertedMode" type="checkbox">  
+                                <wave-diagram :mode="parsedInput.mode" 
+                                            :freq="parsedInput.freq" 
+                                            colour="#7979d1" 
+                                            :update="updateBit"></wave-diagram>
+
+                                <div>
+                                    Device mode: 
+                                    <select v-model="input.mode">
+                                        <option v-for="i in 5">{{i}}</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    Frequency: <input v-model="input.freq" type="range" min="1" max="10" step="0.1"> 
+                                </div>
+        
+                                <button class="activate-btn" @click="activate">Activate device</button>
+                            </div>
                         </div>
-                        
-                        <div>
-                            Device mode: 
-                            <select v-model="input.mode">
-                                <option v-for="i in 5">{{i}}</option>
-                            </select>
-                        </div>
-                        <div>
-                            Frequency: <input v-model="input.freq" type="range" min="1" max="10" step="0.1"> 
-                        </div>
+                        <button v-show="solved.con && solved.des" @click="advance" class="continue">
+                            Continue
+                        </button>
                     </div>
                 </div>
             </base-puzzle>

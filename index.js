@@ -49,36 +49,36 @@ const app = new Vue({
                 {
                     name: "Card game (WIP)",
                     anchor: "./puzzles/superposition-interference/index.html",
-                    answer: "C"
+                    answer: "D"
                 },
             ],
             interlude: [
                 {
                     name: "Second Glimpse into Quantum (WIP)",
                     anchor: "./puzzles/superposition-label-fix/index.html",
-                    answer: "D"
+                    answer: "E"
                 },
             ],
             entanglement: [
                 {
                     name: "Alice and Bob's Entanglement",
                     anchor: "./puzzles/entanglement-alice-bob/index.html",
-                    answer: "E"
+                    answer: "F"
                 },
                 {
                     name: "Missing Label 2 (WIP)",
                     anchor: "./puzzles/superposition-rin/index.html",
-                    answer: "F"
+                    answer: "G"
                 },
                 {
                     name: "Quantum Arithmetic (WIP)",
                     anchor: "",
-                    answer: "G"
+                    answer: "H"
                 },
                 {
                     name: "IDK (WIP)",
                     anchor: "",
-                    answer: "G"
+                    answer: "I"
                 },
             ],
             meta: [
