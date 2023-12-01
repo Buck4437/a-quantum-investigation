@@ -46,6 +46,11 @@ const app = new Vue({
                     anchor: "./puzzles/superposition-interference/index.html",
                     answer: "C"
                 },
+                {
+                    name: "Card game (WIP)",
+                    anchor: "./puzzles/superposition-interference/index.html",
+                    answer: "C"
+                },
             ],
             interlude: [
                 {
@@ -70,17 +75,10 @@ const app = new Vue({
                     anchor: "",
                     answer: "G"
                 },
-            ],
-            interlude2: [
                 {
-                    name: "Entangled (WIP)",
-                    anchor: "./puzzles/superposition-label-fix/index.html",
-                    answer: "H"
-                },
-                {
-                    name: "Puzzles (WIP)",
-                    anchor: "./puzzles/superposition-label-fix/index.html",
-                    answer: "H"
+                    name: "IDK (WIP)",
+                    anchor: "",
+                    answer: "G"
                 },
             ],
             meta: [
