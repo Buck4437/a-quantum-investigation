@@ -3,79 +3,69 @@
     <head>
         <meta charset="utf-8">
         <title>Loading...</title>
-        <link rel="stylesheet" href="../../global/styles.css">
         <link rel="stylesheet" href="./stylesheets/styles.css">
+        <link rel="stylesheet" href="../../global/styles.css">
     </head>
     <body>
         <div id="app">
             <base-puzzle :title="title" class="puzzle">
                 <template v-slot:flavour-text>
-                    "???"
+                    "I found a bunch of crates in the warehouse. Can you help me stablise them?"
                 </template>
 
                 <hr width="100%">
 
                 <div class="intro">
+
                     <p>
-                        Stephen shows you a couple of ores.
+                        Interference is like musicians in a band: if all of them are in harmony,
+                        the music is also harmonous and is amplified. However, if they are in conflict, then
+                        the music is chaotic and its effect is reduce, or even inaudible.
+                    </p>
+                    
+                    <p>
+                        Similarly, quantum interference happens when quantum objects interact with each other.
+                        When quantum interference happens, 
+                        quantum states might be cancelled out or become amplified.
                     </p>
 
                     <p>
-                        "These ores have a very small chance of containing valuable emeralds.
-                        However, unlike regular ores, these ores are <b>quantum</b>. This means that
-                        we can try and alter the ores' superposition states before cracking them open."
-                    </p>
-
-                    <p>
-                        "I wish there is an easy way to alter the possibilities. But I couldn't find one. Instead,
-                        I stumpled upon a phenomenon called 'interference'."
-                    </p>
-
-                    <p>
-                        This is analogous to water waves. When you throw two rocks at a lake, ripples are formed.
-                        You may notice that at some point, the ripples would cancel out each other.
-                        Similar things happen to quantum objects when they undergo quantum interference.
-                    </p>
-
-                    <p>
-                        What is it useful for? If we have some superposition states that we want to avoid, we can try to 
-                        remove these states before measurements. This allows us to get more favourable measurement, 
-                        and is very useful in quantum computers.
+                        This allows us to remove the unwanted quantum state and amplify the wanted ones.
                     </p>
                 </div>
 
                 <hr width="100%">
 
                 <div class="rules">
-                    Rules:<br>
+                    Rules:
                     <ul>
-                        <li>There are ? levels in total.</li>
-                        <li>In each level, there is a ball in a superposition state.</li>
-                        <li>Your target is to make use of quantum interference to cancel out the red states, such that only the green state remain.</li>
-                        <li>Each state of the ball comes with a number. There are two types of move: normal and interfere.</li>
-                        <li>Normal moves change the numbers of all states according to the given rule.</li>
-                        <li>Interfere will remove all <b>conjugate pairs</b>, 
-                            that is, if there exist a pair of numbers with state X and -X, interfere will remove this pair of number.
-                            (Note that red states will priority with interfering with green state.)</li>
-                        <li>If only the green state remains, you will be able to measure it and proceed to the next level!</li>
+                        <li>The goal of this puzzle is to stablise each quantum crate.</li>
+                        <li>Each quantum crate is in a superposition state of stable and unstable. They are represented by waveforms.</li>
+                        <li>There are two things you need to accomplish: amplifying the stable state, and cancelling the unstable state.</li>
+                        <li>To amplify the stable state, calibrate the device such that its waveform matches that of the stable state.</li>
+                        <li>To cancel the unstable state, use inverted mode, and calibrate the device such that its waveform is the <b>inversion</b> of the waveform of the unstable state.</li>
                     </ul>
                 </div>
-                
 
                 <hr width="100%">
 
                 <div class="game">
-                    <template v-if="currentLevel <= LEVELMAX">
-                        <div class="level-display">Level {{currentLevel}}</div>
-
-                        <div class="ball-con">
-                            <div v-for="ball in remainingBalls" class="ball" :class="ball.type">{{ball.value}}</div>
+                    <div v-if="loreText !== null" class="content">
+                        <div class="lore">
+                            {{loreText}}
                         </div>
-                    </template>
-                    <div v-else="currentLevel > LEVELMAX">
+                        <div>
+                            <button @click="textId++" class="next">Next</button>
+                        </div>
+                    </div>
+                    <div v-if="loreText === null && phase > MAXPHASE" class="end" class="content">
                         Task completed!<br><br>
-                        As a reference, you jotted down <span class="password">{{password}}</span> in your memo.<br>
+                        As a reference, you jotted down <span class="password">{{password}}</span> in your memo.<br><br>
                         <button @click="resetGame">Play Again</button>
+                    </div>
+
+                    <div v-show="loreText === null && phase <= MAXPHASE">
+                        <wave-diagram :mode="5" :freq="1" :offset="1" colour="white" :update="updateBit" :inverted="false"></wave-diagram>
                     </div>
                 </div>
             </base-puzzle>
