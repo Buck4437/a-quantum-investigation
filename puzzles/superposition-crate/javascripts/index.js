@@ -6,12 +6,12 @@ const waveFunctions = {
     },
 
     2: (freq, theta) => {
-        return Math.tan(freq * theta) / 5;
+        return Math.tan(freq * theta / 2) / 5;
     },
     
     3: (freq, theta) => {
-        const x = theta / Math.PI / 2 * freq;
-        return 2 * (x * 2 - Math.floor(x * 2)) - 1;
+        const x = theta / Math.PI / 2 * freq - 0.5;
+        return 2 * (x - Math.floor(x)) - 1;
     },
 
     4: (freq, theta) => {
@@ -20,7 +20,7 @@ const waveFunctions = {
     },
 
     5: (freq, theta) => {
-        const x = theta / Math.PI * freq;
+        const x = theta / Math.PI * freq / 2;
         return 4 * Math.abs(x - Math.floor(x + 3/4) + 1/4) - 1;
     }
 }
@@ -28,10 +28,9 @@ const waveFunctions = {
 const waveComponent = Vue.component("wave-diagram", {
     props: {
         mode: Number,
-        // 0.1 to 10?
+        // 1 to 10
         freq: Number,
-        // -10 to 10, for y axis?
-        offset: Number,
+        // -1 to 1, for y axis?
         colour: String,
         update: Number,
         inverted: Boolean
@@ -52,7 +51,7 @@ const waveComponent = Vue.component("wave-diagram", {
                 ctx.stroke();
 
                 ctx.beginPath();
-                ctx.strokeStyle = "red";
+                ctx.strokeStyle = this.colour;
                 ctx.moveTo(0, this.calc(0));
                 for (let i = 1; i <= 600; i += 1) {
                     ctx.lineTo(i, this.calc((i / 600) * 2 * Math.PI));
@@ -73,7 +72,7 @@ const waveComponent = Vue.component("wave-diagram", {
         freq() {
             this.repaint();
         },
-        offset() {
+        inverted() {
             this.repaint();
         },
         colour() {
@@ -99,9 +98,21 @@ const app = new Vue({
         title: "Unstable Crates",
 
         phase: 1,
-        MAXPHASE: 3,
+        MAXPHASE: 5,
 
+        invertedMode: false,
+        input: {mode: 1, freq: 1},
         updateBit: 0,
+
+        answers: [
+            null,
+            {con: {mode: 1, freq: 7}, des: {mode: 1, freq: 3}},
+            {con: {mode: 2, freq: 2}, des: {mode: 3, freq: 9}},
+            {con: {mode: 4, freq: 3}, des: {mode: 5, freq: 4}},
+            {con: {mode: 2, freq: 7.5}, des: {mode: 5, freq: 6.5}},
+            {con: {mode: 4, freq: 2.5}, des: {mode: 3, freq: 9.5}},
+            null
+        ],
 
         textId: 100,
         // textId: 0,
@@ -114,7 +125,7 @@ const app = new Vue({
             "'Anyways, I have made a device that might be able to cancel out the unstable states...'",
             "He hands a device to you.",
             "WIP: Image",
-            "'There are three types of crates here. Use this device to stablise all of the crates.'",
+            "'There are multiple types of crates here. Use this device to stablise all of the crates.'",
             "'I believe in you.'",
             "After handing over the device to you. He runs out immediately.",
             "Looks like you have some work to do."
@@ -126,6 +137,18 @@ const app = new Vue({
                 return null;
             }
             return this.text[this.textId];
+        },
+        currentAnswers() {
+            if (this.phase > this.MAXPHASE) {
+                return {con: {mode: 1, freq: 0}, des: {mode: 1, freq: 0}};
+            }
+            return this.answers[this.phase];
+        },
+        parsedInput() {
+            return {
+                mode: Number(this.input.mode),
+                freq: Number(this.input.freq)
+            }
         }
     },
     methods: {

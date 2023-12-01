@@ -43,7 +43,7 @@ const app = new Vue({
                 },
                 {
                     name: "Unstable Crates (WIP)",
-                    anchor: "./puzzles/superposition-interference/index.html",
+                    anchor: "./puzzles/superposition-crate/index.html",
                     answer: "C"
                 },
                 {

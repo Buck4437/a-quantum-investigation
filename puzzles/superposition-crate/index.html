@@ -39,7 +39,7 @@
                 <div class="rules">
                     Rules:
                     <ul>
-                        <li>The goal of this puzzle is to stablise each quantum crate.</li>
+                        <li>The goal of this puzzle is to stablise all quantum crates.</li>
                         <li>Each quantum crate is in a superposition state of stable and unstable. They are represented by waveforms.</li>
                         <li>There are two things you need to accomplish: amplifying the stable state, and cancelling the unstable state.</li>
                         <li>To amplify the stable state, calibrate the device such that its waveform matches that of the stable state.</li>
@@ -65,7 +65,37 @@
                     </div>
 
                     <div v-show="loreText === null && phase <= MAXPHASE">
-                        <wave-diagram :mode="5" :freq="1" :offset="1" colour="white" :update="updateBit" :inverted="false"></wave-diagram>
+                        <wave-diagram :mode="currentAnswers.con.mode" 
+                                      :freq="currentAnswers.con.freq" 
+                                      colour="white" 
+                                      :update="updateBit" 
+                                      :inverted="false"></wave-diagram>
+                            
+                        <wave-diagram :mode="currentAnswers.des.mode" 
+                                      :freq="currentAnswers.des.freq" 
+                                      colour="white" 
+                                      :update="updateBit" 
+                                      :inverted="false"></wave-diagram>
+                            
+                        <wave-diagram :mode="parsedInput.mode" 
+                                      :freq="parsedInput.freq" 
+                                      colour="blue" 
+                                      :update="updateBit" 
+                                      :inverted="invertedMode"></wave-diagram>
+
+                        <div>
+                            Inverted mode: <input v-model="invertedMode" type="checkbox">  
+                        </div>
+                        
+                        <div>
+                            Device mode: 
+                            <select v-model="input.mode">
+                                <option v-for="i in 5">{{i}}</option>
+                            </select>
+                        </div>
+                        <div>
+                            Frequency: <input v-model="input.freq" type="range" min="1" max="10" step="0.1"> 
+                        </div>
                     </div>
                 </div>
             </base-puzzle>
