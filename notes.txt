@@ -12,31 +12,20 @@ Each group member submits the work on Moodle (no group submission).
 Write solution page for each puzzle.
 
 TODO:
-Overall structure:
-- Assets
+Introduction (aka README, explanations, etc.)
+- Create it ffs
 
 Superposition:
-- Quantum 24 (correct regardless of state), Quantum thief (?)
-- Quantum Card Game
+- Quantum 24 (correct regardless of state) / Quantum thief / Quantum Card Game
 
 Unstable Crate:
 - Add password
 - Add asssets
 - Add animation when you measure device (make waveform goes whooooom)
-
-Missing Label:
-- Add password
-
-Inviting Rin:
-- Add assets
-- Add password
+=> When writing solution, say it is inspired by the qubit game?
 
 Alice and Bob's Entanglement
 - Add assets for Alice, Bob, and then somehow express their Entanglement relationship using art / canvas / whatever
-- Add password
-
-Entangled Cube
-- Add password
 
 Ideas from ChatGPT:
 - Quantum State Manipulation: Players can manipulate objects or elements in the game to exist in superpositions of different states. The objective is to use these superposed states strategically to solve puzzles. For example, a puzzle might require aligning objects in such a way that their superposed states interact constructively to unlock a door or reveal a hidden path.

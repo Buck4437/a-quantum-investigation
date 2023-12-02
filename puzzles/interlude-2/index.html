@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Loading...</title>
+        <link rel="stylesheet" href="./stylesheets/styles.css">
+        <link rel="stylesheet" href="../../global/styles.css">
+    </head>
+    <body>
+        <div id="app">
+            <base-puzzle :title="title" class="puzzle">
+                <hr width="100%">
+
+                <div class="intro">
+                    <p>
+                        "Max, you might want to take a look at this as well."
+                    </p>
+
+                    <p>
+                        You follow Stephen into another room. He removed a package from the shelf. 
+                        It has the following label:
+                    </p>
+
+                    <div class="label-con">
+                        <div class="label">
+                            <span>◯</span>
+                        </div>
+                    </div>
+                    
+                    <p>
+                        After that, he puts the package inside a gigantic machine, and he activates the machine.
+                        After a bunch of clanks and shaking, the machine stops running, and from its output, 
+                        you saw two packages popping out from the bottom.
+                    </p>
+
+                    <img src="src/machine.png">
+
+                    <p>
+                        You inspect the labels of the packages. This time, the label looks pretty different:
+                        Instead of only a single box, there are two boxes on each of the label.
+                    </p>
+
+                    <img src="src/labels.png">
+
+                    <p>
+                        Stephen repeats the process for 15 more packages, creating a total of 16 pairs of packages.
+                        Like before, he arranges them on the table, 
+                    </p>
+                    
+                    <div class="experiment">
+                        <table>
+                            <tr v-for="i in 4">
+                                <template v-for="j in 4">
+                                    <td class="package-pair">
+                                        <div v-for="k in 2" class="package">
+                                            <div class="package-text-con">
+                                                <span v-if="seed != -1" :class="classOf(i, j)">◯</span>
+                                                <span v-else>?</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </template>
+                            </tr>
+                        </table>
+    
+                        <button @click="openAll(1)">Open all</button>
+                    </div>
+
+                    <template v-if="seed != -1">
+                        <p>
+                            You inspect the packages. It seems that each pair of package will always have the same colour.
+                            Both balls are either red, or blue.
+                        </p>
+
+                        <p>
+                            "Hmm, what does the machine do to the balls?" You ask Stephen.
+                        </p>
+
+                        <p>
+                            "The machine splits the quantum ball inside in half, 
+                            and constuct two balls from the splitted part," he replied.
+                            "What's interesting is that, the states of the two balls are always synchronised.
+                            They are either both red, or both blue."
+                        
+                        </p>
+
+                        <p>
+                            "Even though we cannot predict the exact state 
+                            of the balls before opening the packages, we know that there are some business going on
+                            between the two balls.It is as if the two balls are <span class="password">ENTANLGED</span> together,
+                            sharing a common fate."
+                        </p>
+
+                        <p>
+                            "If we inspect only one of the packages, we may not realise that these two packages are 
+                            somehow <span class="password">ENTANLGED</span>. Only by looking them 
+                            together as whole, would we have the full picture of their relationship."
+                        </p>
+
+                        <p>
+                            "This is the charm of quantum entanglement: you cannot describe the state an entangled objects
+                            without involving the state of the other objects."
+                        </p>
+
+                        <p>
+                            You nod your hand and write something down on your <span class="password">memo</span>.
+                        </p>
+                    </template>
+                </div>
+            </base-puzzle>
+        </div>
+    </body>
+    <script src="../../libraries/vue.min.js"></script>
+
+    <script src="../../global/BasePuzzle.js"></script>
+    <script src="javascripts/index.js"></script>
+</html>

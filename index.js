@@ -3,16 +3,21 @@ const app = new Vue({
     data: {
         inputModel: "",
         solves: {
-            intro: [true, true, true],
-            // intro: [false, false, false],
-            superposition: [false, false, false],
-            interlude: [false],
-            entanglement: [false, false, false],
-            interlude2: [false, false],
-            chaos: [false, false, false, false, false, false],
+            readme: [false],
+            intro: [false, false, false],
+            superposition: [false, false, false, false],
+            interlude: [false, false],
+            entanglement: [false, false, false, false],
             meta: [false]
         },
         links: {
+            readme: [
+                {
+                    name: "What is this?",
+                    anchor: "./puzzles/readme/index.html",
+                    answer: "START"
+                }
+            ],
             intro: [
                 {
                     name: "Beginning",
@@ -42,7 +47,7 @@ const app = new Vue({
                     answer: "B"
                 },
                 {
-                    name: "Unstable Crates (WIP)",
+                    name: "Unstable Crates",
                     anchor: "./puzzles/superposition-crate/index.html",
                     answer: "C"
                 },
@@ -55,8 +60,13 @@ const app = new Vue({
             interlude: [
                 {
                     name: "Second Glimpse into Quantum (WIP)",
-                    anchor: "./puzzles/superposition-label-fix/index.html",
-                    answer: "E"
+                    anchor: "./puzzles/interlude/index.html",
+                    answer: "ENTANGLED"
+                },
+                {
+                    name: "Entanglement",
+                    anchor: "./puzzles/interlude/index.html",
+                    answer: "SPOOKY"
                 },
             ],
             entanglement: [
@@ -91,7 +101,7 @@ const app = new Vue({
         }
     },
     computed: {
-        calculatedIntros() {
+        filteredIntros() {
             const intros = this.links.intro;
             const unlocked = []
             for (let i = 0; i < intros.length; i++) {
@@ -104,11 +114,24 @@ const app = new Vue({
             }
             return unlocked;
         },
+        filteredInterludes() {
+            const interludes = this.links.interlude;
+            const unlocked = []
+            for (let i = 0; i < interludes.length; i++) {
+                if (i === 0 || this.solves.interlude[i - 1] || this.solves.interlude[i]) {
+                    unlocked.push({
+                        idx: i,
+                        obj: interludes[i]
+                    });
+                }
+            }
+            return unlocked;
+        },
         unlockedInterlude() {
             return this.solves.superposition.map(x => x ? 1 : 0).reduce((a, b) => a + b, 0) >= 2;
         },
         unlockedMeta() {
-            return this.solves.chaos.map(x => x ? 1 : 0).reduce((a, b) => a + b, 0) >= 4;
+            return this.solves.entanglement.map(x => x ? 1 : 0).reduce((a, b) => a + b, 0) >= 4;
         }
     },
     methods: {

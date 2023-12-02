@@ -9,7 +9,7 @@
     </head>
     <body>
         <div id="app">
-            <base-puzzle title="Quantum Puzzles" id="main-content">
+            <base-puzzle title="A Quantum Investigation" id="main-content">
                 <div>
 
                     
@@ -17,14 +17,28 @@
                         Acknowledgement: This website uses <a href="https://vuejs.org/" target="_blank">Vue.js</a> by Evan You.
                     </div>
 
-                    <div class="section">Beginning</div>
+                    <div class="section">Introduction</div>
                     <ul>
-                        <li v-for="pair in calculatedIntros">
-                            <a :href="pair.obj.anchor" target="_blank">{{pair.obj.name}}</a>
-                            <span v-if="solves.intro[pair.idx]">(Completed! Answer: <span class="password">{{pair.obj.answer}}</span>)</span>
+                        <li v-for="(link, i) in links.readme">
+                            <a :href="link.anchor" target="_blank">{{link.name}}</a>
+                            <span v-if="solves.readme[i]">(Completed!)</span>
                         </li>
                     </ul>
                     <hr width="100%">
+
+                    
+                    <template v-if="solves.readme[0]">
+
+                        <div class="section">Beginning</div>
+                        <ul>
+                            <li v-for="pair in filteredIntros">
+                                <a :href="pair.obj.anchor" target="_blank">{{pair.obj.name}}</a>
+                                <span v-if="solves.intro[pair.idx]">(Completed! Answer: <span class="password">{{pair.obj.answer}}</span>)</span>
+                            </li>
+                        </ul>
+                        <hr width="100%">
+
+                    </template>
 
                     <template v-if="solves.intro[2]">
                         <div class="section">Superposition</div>
@@ -50,16 +64,16 @@
                         <div class="section">Interlude</div>
 
                         <ul>
-                            <li v-for="(link, i) in links.interlude">
-                                <a :href="link.anchor" target="_blank">{{link.name}}</a>
-                                <span v-if="solves.interlude[i]">(Completed! Answer: <span class="password">{{link.answer}}</span>)</span>
+                            <li v-for="pair in filteredInterludes">
+                                <a :href="pair.obj.anchor" target="_blank">{{pair.obj.name}}</a>
+                                <span v-if="solves.interlude[pair.idx]">(Completed! Answer: <span class="password">{{pair.obj.answer}}</span>)</span>
                             </li>
                         </ul>
                         
                         <hr width="100%">
                     </template>
                     
-                    <template v-if="solves.interlude[0]">
+                    <template v-if="solves.interlude[1]">
                         <div class="section">Entanglement</div>
 
                         <ul>
