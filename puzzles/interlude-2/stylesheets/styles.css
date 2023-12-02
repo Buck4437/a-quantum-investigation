@@ -85,7 +85,30 @@ table {
     justify-content: center;
 }
 
+.package {
+    width: 70px;
+    height: 70px;
+    font-size: 30px;
+    border: 2px solid white;
+}
+
 button {
     width: 150px;
     height: 55px;
+}
+
+.red-border {
+    border-color: red;
+}
+
+.yellow-border {
+    border-color: rgb(205, 255, 3);
+}
+
+.light-blue-border {
+    border-color: #7979d1;
+}
+
+.green-border {
+    border-color: #77ff77;
 }

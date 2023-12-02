@@ -13,39 +13,12 @@
 
                 <div class="intro">
                     <p>
-                        "Max, you might want to take a look at this as well."
-                    </p>
-
-                    <p>
-                        You follow Stephen into another room. He removed a package from the shelf. 
-                        It has the following label:
-                    </p>
-
-                    <div class="label-con">
-                        <div class="label">
-                            <span>◯</span>
-                        </div>
-                    </div>
-                    
-                    <p>
-                        After that, he puts the package inside a gigantic machine, and he activates the machine.
-                        After a bunch of clanks and shaking, the machine stops running, and from its output, 
-                        you saw two packages popping out from the bottom.
-                    </p>
-
-                    <img src="src/machine.png">
-
-                    <p>
-                        You inspect the labels of the packages. This time, the label looks pretty different:
-                        Instead of only a single box, there are two boxes on each of the label.
+                        "Of course, this isn't the only kind of entanglement. 
+                        As long as the states of quantum objects are somehow connected, there is entanglement." 
+                        Max configures the machine and creates more pairs of packages. Their labels look a bit different.
                     </p>
 
                     <img src="src/labels.png">
-
-                    <p>
-                        Stephen repeats the process for 15 more packages, creating a total of 16 pairs of packages.
-                        Like before, he arranges them on the table, 
-                    </p>
                     
                     <div class="experiment">
                         <table>
@@ -54,7 +27,7 @@
                                     <td class="package-pair">
                                         <div v-for="k in 2" class="package">
                                             <div class="package-text-con">
-                                                <span v-if="seed != -1" :class="classOf(i, j)">◯</span>
+                                                <span v-if="seed != -1" :class="classOf(i, j, k == 1)">◯</span>
                                                 <span v-else>?</span>
                                             </div>
                                         </div>
@@ -68,42 +41,75 @@
 
                     <template v-if="seed != -1">
                         <p>
-                            You inspect the packages. It seems that each pair of package will always have the same colour.
-                            Both balls are either red, or blue.
+                            You open the packages. This time, each pair of package contains exactly one red ball and one blue ball.
                         </p>
 
                         <p>
-                            "Hmm, what does the machine do to the balls?" You ask Stephen.
+                            "We can also do entanglements with other superposition states, 
+                            like balls with different sizes, or different locations, 
+                            but I want to show you something more interesting."
                         </p>
 
                         <p>
-                            "The machine splits the quantum ball inside in half, 
-                            and constuct two balls from the splitted part," he replied.
-                            "What's interesting is that, the states of the two balls are always synchronised.
-                            They are either both red, or both blue."
+                            He creates four pairs of entangled packages, with the same entanglement as before (one red and one blue). 
+                            He labelled each pair as red, yellow, blue and green.
+                            After that, he separates the pairs of package. From each pair of packages, 
+                            he places one box on one side of the room, and another one to another side.
+                        </p>
+
+                        <img src="src/room.png">
+
+                        <p>
+                            You head to one side of the room and inspect the boxes.
+                        </p>
                         
+                        <div class="experiment">
+                            <table>
+                                <tr>
+                                    <td v-for="i in 4" class="package" :class="[idToColour(i)]">
+                                        <span v-if="seed2 != -1" :class="classOf(i, 0, false, 2)">◯</span>
+                                        <span v-else>?</span>
+                                    </td>
+                                </tr>
+                            </table>
+        
+                            <button @click="openAll(2)">Open all</button>
+                        </div>
+                    </template>
+
+                    <template v-if="seed2 != -1">
+                        <p>
+                            After that, you head to the other side of the room and open the boxes.
+                        </p>
+
+                        <div class="experiment">
+                            <table>
+                                <tr>
+                                    <td v-for="i in 4" class="package" :class="[idToColour(i)]">
+                                        <span v-if="seed3 != -1" :class="classOf(i, 0, true, 3)">◯</span>
+                                        <span v-else>?</span>
+                                    </td>
+                                </tr>
+                            </table>
+        
+                            <button @click="openAll(3)">Open all</button>
+                        </div>
+                    </template>
+
+                    <template v-if="seed3 != -1">
+                        <p>
+                            "As you can see, the boxes are still entangled," 
+                            Stephen says. "Furthermore, when you open one of the boxes, 
+                            the other box's state is also determined immediately, regardless of their distance. 
+                            This is true even if the boxes are lightyears apart!"
+                        </p>
+                        
+                        <p>
+                            "Why does this happens? We don't know. Einstein calls this '<span class="password">SPOOKY</span> action at a distance', but I call this 'Awesome'." Stephen continues.
                         </p>
 
                         <p>
-                            "Even though we cannot predict the exact state 
-                            of the balls before opening the packages, we know that there are some business going on
-                            between the two balls.It is as if the two balls are <span class="password">ENTANLGED</span> together,
-                            sharing a common fate."
-                        </p>
-
-                        <p>
-                            "If we inspect only one of the packages, we may not realise that these two packages are 
-                            somehow <span class="password">ENTANLGED</span>. Only by looking them 
-                            together as whole, would we have the full picture of their relationship."
-                        </p>
-
-                        <p>
-                            "This is the charm of quantum entanglement: you cannot describe the state an entangled objects
-                            without involving the state of the other objects."
-                        </p>
-
-                        <p>
-                            You nod your hand and write something down on your <span class="password">memo</span>.
+                            You noted this down in your <span class="password">memo</span>.
                         </p>
                     </template>
                 </div>

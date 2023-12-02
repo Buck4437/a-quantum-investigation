@@ -78,7 +78,7 @@ const app = new Vue({
                 }[data[1]];
             }
             if (this.isHighlighted(r, c)) {
-                return "yellow";
+                return "green";
             }
             if (this.threePairsFormed) {
                 return "grey";
