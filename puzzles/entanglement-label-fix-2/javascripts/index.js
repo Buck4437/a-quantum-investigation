@@ -5,7 +5,7 @@ const app = new Vue({
         level: 1,
         LEVELMAX: 7,
         text: {
-            password: "PLACEHOLDER"
+            password: "LINKED"
         },
         answers: [
             ("X12").split("\n").map(x => x.split("")),

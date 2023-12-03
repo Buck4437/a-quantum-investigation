@@ -7,7 +7,7 @@ const app = new Vue({
         MAXPHASE: 1,
         actionText: "",
         textId: 0,
-        password: "AWDIGEIFGHEIFGFEFEFJ)OWEFHOWEIFLNEWF",
+        password: "CAMPING",
         text1: [
             "Stephen will be having a dinner with his friends. He wants to invite Rin to the dinner.",
             "However, for some unknown reason, Rin has rejected him three times in a row.",

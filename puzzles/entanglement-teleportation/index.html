@@ -10,7 +10,7 @@
         <div id="app">
             <base-puzzle :title="title" class="puzzle">
                 <template v-slot:flavour-text>
-                    "I have to send some quantum lootboxes. Can you help me do so?"
+                    "I have to send some quantum packages. Can you help me do so?"
                 </template>
 
                 <hr width="100%">
@@ -48,7 +48,7 @@
 
                 <div class="page" v-show="page === 2">
                     <p>
-                        "We use the analysers to do the hard work of encoding and decoding particle states.
+                        "We use analysers to encode and decode particle states.
                         All we need to do is to press a button... damn it, the analyser broke."
                     </p>
 
@@ -67,16 +67,49 @@
                         Rules:<br>
                         <ul>
                             <li>There are three stages. Complete all stages to proceed.</li>
-                            <li>A simplified version of the analyser is shown here.</li>
                             <li>The analyser combines a quantum ball and an entangled particle together.</li>
                             <li>Your target is to repair the analyser by figuring out the sequence of instructions.</li>
                             <li>Create the ball on the right by applying the correct sequence of instruction.</li>
+                            <li><i>(Note: All protocols and step names are fictional.)</i></li>
                         </ul>
 
                     <hr width="100%">
 
                     <div class="terminal">
-                        Configuring
+                        <div v-if="level <= LEVELMAX">
+                            Configuring Protocol {{level}} / 3:<br>
+                        
+                            Initial Ball State: {{initialState.ball[0]}} / {{initialState.ball[1]}}<br>
+                            Initial Entangled Particle: {{initialState.entangled[0]}} / {{initialState.entangled[1]}}<br>
+                            Procedure:<br>
+                            <ul>
+                                <li v-for="i in 4">Step {{i}}: 
+                                    <template v-if="!isCorrect">
+                                        <select v-model="steps[i - 1]">
+                                            <option value="-1">---</option>
+                                            <option v-for="i in 3" :value="i - 1">{{stepName[i-1]}}</option>
+                                        </select>
+                                    </template>
+                                    <template v-else>
+                                        {{steps[i - 1] === -1 ? "---" : stepName[steps[i - 1]]}}
+                                    </template>
+                                </li>
+                                <li>Step 5: Merge</li>
+                            </ul>
+                            Final Product: {{output[0]}} / {{output[1]}}<br>
+                            Target Product: {{target[0]}} / {{target[1]}}<br>
+
+                            <button v-show="!isCorrect" @click="submit">
+                                Submit
+                            </button>
+                            <span v-show="isCorrect" class="green">Correct!</span>
+                            <button v-show="isCorrect" @click="next">
+                                Next
+                            </button>
+                        </div>
+                        <div v-else>
+                            Configuration Complete.
+                        </div>
                     </div>
                 </div>
 
@@ -87,28 +120,33 @@
                         and the analyser would process the balls and generate an output."
                     </p>
 
-                    <button>Press button</button>
+                    <div>
+                        <span v-if="!buttonPressed">Awaiting confirmation...</span>
+                        <span v-else>Measurement result: <span class="password">{{password}}</span></span>
+                    </div>
 
-                    (Show terminal output here)
+                    <button @click="buttonPressed = true">Press button</button>
 
-                    <p>
-                        "As you can see, we have processed the measurement outputs to make it human-friendly.
-                        Normally, it would merely be a bunch of zeroes and ones, " Stephen said.
-
-                        "Now we just need to email them this output, and they would be able to recover the balls!"
-                    </p>
-
-                    <p>
-                        "Oh yeah, we can throw away the balls now. Quantum information cannot be copied,
-                        so the quantum states of the balls are actually transferred to them."
-                    </p>
-
-                    <img>
-
-                    <p>
-                        You notice that the result of the measurement seems really interesting, you decide to 
-                        jot them down in your <span class="password">memo</span>.
-                    </p>
+                    <template v-if="buttonPressed">
+                        <p>
+                            "As you can see, we have processed the measurement outputs to make it human-friendly.
+                            Normally, it would merely be a bunch of zeroes and ones, " Stephen said.
+    
+                            "Now we just need to email them this output, and they would be able to recover the balls!"
+                        </p>
+    
+                        <p>
+                            "Oh yeah, we can throw away the balls now. Quantum information cannot be copied,
+                            so the quantum states of the balls are actually transferred to them."
+                        </p>
+    
+                        <img>
+    
+                        <p>
+                            You notice that the result of the measurement seems really interesting, you decide to 
+                            jot it down in your <span class="password">memo</span>.
+                        </p>
+                    </template>
 
                 </div>
                 

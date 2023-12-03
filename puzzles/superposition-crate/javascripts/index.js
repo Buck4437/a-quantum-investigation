@@ -123,7 +123,7 @@ const app = new Vue({
 
         textId: 100,
         // textId: 0,
-        password: "wofuwheofhwofhwoefhwofhoiwefioh)OWEFHOWEIFLNEWF",
+        password: "COLLAPSE",
         text: [
             "Stephen brings you to a section of the warehouse.",
             "He opens the door. You saw a bunch of metal crates.",

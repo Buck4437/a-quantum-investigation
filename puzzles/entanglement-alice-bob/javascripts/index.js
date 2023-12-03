@@ -7,7 +7,7 @@ const app = new Vue({
             aliceGen: "",
             guess: "",
             answer: "",
-            password: "1234567890"
+            password: "TOGETHER"
         },
         level: 1,
         LEVELMAX: 4,

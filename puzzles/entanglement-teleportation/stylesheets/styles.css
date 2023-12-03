@@ -21,3 +21,12 @@ ul {
     text-align: left;
 }
 
+.terminal {
+    width: 90%;
+    border: 2px solid white;
+    height: 400px;
+}
+
+.green {
+    color: lime;
+}

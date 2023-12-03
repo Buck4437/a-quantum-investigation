@@ -12,16 +12,20 @@ Each group member submits the work on Moodle (no group submission).
 Write solution page for each puzzle.
 
 TODO:
+Metapuzzle
+
 Fact Check (Done after every stuff)
 
 Introduction (aka README, explanations, etc.)
 - Create it ffs
 
-Superposition:
-- Math game / Quantum sokoban? / Quantum Card Game
+Write solution
+
+Polishing:
+- Package Delivery (!!!)
 
 Assets: 
-- Missing: Unstable crates / Missing Label 1, 2 / Alice and Bob
+- Missing: Unstable crates / Missing Label 1, 2 / Alice and Bob / Package Delivery
 
 Unstable Crate:
 - Add animation when you measure device (make waveform goes whooooom)
@@ -30,6 +34,4 @@ Unstable Crate:
 Alice and Bob's Entanglement
 - Somehow express their Entanglement relationship using art / canvas / whatever
 
-Ideas from ChatGPT:
-- Quantum State Manipulation: Players can manipulate objects or elements in the game to exist in superpositions of different states. The objective is to use these superposed states strategically to solve puzzles. For example, a puzzle might require aligning objects in such a way that their superposed states interact constructively to unlock a door or reveal a hidden path.
-- Quantum Word Puzzle: Objective: Reveal a hidden word by deducing the correct order of letters based on clues involving quantum superposition.
+Graphics can come later.

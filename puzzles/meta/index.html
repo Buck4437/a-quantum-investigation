@@ -27,8 +27,16 @@
                     <p>
                         You want to say someething, but you can't quite formulate your mind. So, 
                         you look at your memo. 
-                        You feel that your previous <span class="password">memos</span> would be very useful in answering Stephen's question.
+                        You feel that all of your previous <span class="password">memos</span> would be <b><i>very useful</i></b> in answering Stephen's question.
                     </p>
+
+                    <div v-for="clue in clues" class="clue">
+                        <span class="clue-name password">{{clue.name}} </span>
+                        <div class="clue-boxes-con">
+                            <div v-for="i in clue.length" :class="{'password-border': i === clue.index}" class="cell">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </base-puzzle>
         </div>

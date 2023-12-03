@@ -39,7 +39,7 @@ const app = new Vue({
                 {
                     name: "Inviting Rin",
                     anchor: "./puzzles/superposition-rin/index.html",
-                    answer: "A"
+                    answer: "CAMPING"
                 },
                 {
                     name: "Missing Labels",
@@ -49,13 +49,8 @@ const app = new Vue({
                 {
                     name: "Unstable Crates",
                     anchor: "./puzzles/superposition-crate/index.html",
-                    answer: "C"
-                },
-                {
-                    name: "Card game (WIP)",
-                    anchor: "./puzzles/superposition-interference/index.html",
-                    answer: "D"
-                },
+                    answer: "COLLAPSE"
+                }
             ],
             interlude: [
                 {
@@ -73,30 +68,32 @@ const app = new Vue({
                 {
                     name: "Alice and Bob's Entanglement",
                     anchor: "./puzzles/entanglement-alice-bob/index.html",
-                    answer: "F"
+                    answer: "TOGETHER"
                 },
                 {
                     name: "Missing Labels 2",
                     anchor: "./puzzles/entanglement-label-fix-2/index.html",
-                    answer: "G"
-                },
-                {
-                    name: "Quantum Arithmetic (WIP)",
-                    anchor: "",
-                    answer: "H"
+                    answer: "LINKED"
                 },
                 {
                     name: "Package Delivery",
-                    anchor: "",
-                    answer: "I"
+                    anchor: "./puzzles/entanglement-teleportation/index.html",
+                    answer: "TRANSMISSION"
                 },
             ],
             meta: [
                 {
-                    name: "Farewell (WIP)",
-                    anchor: "./puzzles/finale/index.html",
-                    answer: "UNCERTAINTIES"
+                    name: "Farewell",
+                    anchor: "./puzzles/meta/index.html",
+                    answer: "UNCERTAINTY"
                 },
+            ],
+            epilogue: [
+                {
+                    name: "Epilogue",
+                    anchor: "./puzzles/epilogue/index.html",
+                    answer: "ENDING"
+                }
             ]
         }
     },

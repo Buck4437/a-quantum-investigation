@@ -5,7 +5,7 @@ const app = new Vue({
         level: 1,
         LEVELMAX: 4,
         text: {
-            password: "PLACEHOLDER"
+            password: "MEASURES"
         },
         answers: [
             ("1X3X5\n" +

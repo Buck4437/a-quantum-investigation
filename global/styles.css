@@ -26,6 +26,10 @@ html {
     color: aqua;
 }
 
+.password-border {
+    border-color: aqua;
+}
+
 button{
     color: white;
     background-color: black;

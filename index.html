@@ -105,6 +105,20 @@
                         <hr width="100%">
                     </template>
 
+                    <template v-if="solves.meta[0]">
+                        <div class="section">Epilogue</div>
+
+                        <ul>
+                            <li v-for="(link, i) in links.epilogue">
+                                <a :href="link.anchor" target="_blank">{{link.name}}</a>
+                                <span v-if="solves.meta[i]">(Completed!)</span>
+                            </li>
+                        </ul>
+                        
+                        <hr width="100%">
+                    </template>
+
+
                     Add Memo: <input v-model="inputModel" ref="memoField" placeholder="Enter memo here..."> <button @click="submit">Submit</button>
                 </div>
             </base-puzzle>
