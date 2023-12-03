@@ -10,8 +10,10 @@
     <body>
         <div id="app">
             <base-puzzle title="A Quantum Investigation" id="main-content">
+                <template v-slot:flavour-text>
+                    A puzzle hunt by Tim Wong (Buck)
+                </template>
                 <div>
-
                     
                     <div class="dedication">
                         Acknowledgement: This website uses <a href="https://vuejs.org/" target="_blank">Vue.js</a> by Evan You.
@@ -111,7 +113,7 @@
                         <ul>
                             <li v-for="(link, i) in links.epilogue">
                                 <a :href="link.anchor" target="_blank">{{link.name}}</a>
-                                <span v-if="solves.meta[i]">(Completed!)</span>
+                                <span v-if="solves.epilogue[i]">(Completed!)</span>
                             </li>
                         </ul>
                         

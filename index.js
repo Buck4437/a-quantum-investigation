@@ -8,7 +8,8 @@ const app = new Vue({
             superposition: [false, false, false, false],
             interlude: [false, false],
             entanglement: [false, false, false, false],
-            meta: [false]
+            meta: [false],
+            epilogue: [false]
         },
         links: {
             readme: [
@@ -83,7 +84,7 @@ const app = new Vue({
             ],
             meta: [
                 {
-                    name: "Farewell",
+                    name: "Goodbye",
                     anchor: "./puzzles/meta/index.html",
                     answer: "UNCERTAINTY"
                 },
@@ -98,6 +99,36 @@ const app = new Vue({
         }
     },
     computed: {
+        filteredLinks() {
+            const links = {}
+            links.readme = this.links.readme;
+
+            if (!this.solves.readme[0]) return links;
+            
+            links.intro = this.filteredIntros.map(x => x.obj);
+
+            if (!this.solves.intro[2]) return links;
+            
+            links.superposition = this.links.superposition;
+
+            if (!this.unlockedInterlude) return links;
+            
+            links.interlude = this.filteredInterludes.map(x => x.obj);
+
+            if (!this.solves.interlude[1]) return links;
+
+            links.entanglement = this.links.entanglement;
+
+            if (!this.unlockedMeta) return links;
+
+            links.meta = this.links.meta;
+
+            if (!this.solves.meta[0]) return links;
+
+            links.epilogue = this.links.epilogue;
+
+            return links;
+        },
         filteredIntros() {
             const intros = this.links.intro;
             const unlocked = []
@@ -133,6 +164,7 @@ const app = new Vue({
     },
     methods: {
         submit() {
+            console.log(this.filteredLinks);
             const answer = this.inputModel.trim().toUpperCase().replaceAll(" ", "")
 
             if (answer === "") {
@@ -142,8 +174,8 @@ const app = new Vue({
             this.inputModel = "";
 
             let solved = false;
-            for (let key of Object.keys(this.links)) {
-                const puzzles = this.links[key];
+            for (let key of Object.keys(this.filteredLinks)) {
+                const puzzles = this.filteredLinks[key];
                 for (let i = 0; i < puzzles.length; i++) {
                     const puzzle = puzzles[i];
                     if (answer === puzzle.answer.replaceAll(" ", "")) {
@@ -161,7 +193,7 @@ const app = new Vue({
             if (solved) {
                 alert("You noted this down your memo.");
             } else {
-                alert("This doesn't seem useful... Maybe you shouldn't note this down.")
+                alert("This doesn't seem useful right now...")
             }
         }
     },

@@ -12,14 +12,12 @@ Each group member submits the work on Moodle (no group submission).
 Write solution page for each puzzle.
 
 TODO:
-Metapuzzle
+Solution
 
 Fact Check (Done after every stuff)
 
 Introduction (aka README, explanations, etc.)
 - Create it ffs
-
-Write solution
 
 Polishing:
 - Package Delivery (!!!)

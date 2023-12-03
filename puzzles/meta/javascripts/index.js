@@ -1,7 +1,7 @@
 const app = new Vue({
     el: "#app",
     data: {
-        title: "Farewell",
+        title: "Goodbye",
         clues: [
             {name: "Warehouse", length: 7, index: 2},
             {name: "Inviting Rin", length: 7, index: 6},
