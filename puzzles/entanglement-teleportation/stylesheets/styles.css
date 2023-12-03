@@ -121,6 +121,7 @@ ul {
 
 /* Code adopted from https://stackoverflow.com/questions/23441060/how-to-animate-gradients-using-css */
 .ball-display.end {
+    color: black;
     background: linear-gradient(#ff0000, #5cff00, #006aff, #e1ff00);
     background-size: 200% 200%;
 
@@ -176,7 +177,7 @@ ul {
 }
 
 .ball-display.flash {
-    color: grey;
+    color: white;
 }
 
 .terminal-done {

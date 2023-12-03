@@ -73,9 +73,9 @@ const app = new Vue({
         },
         maxPage() {
             if (!this.solved) {
-                return 2;
+                return 3;
             }
-            return 3;
+            return 4;
         },
         output() {
             // Prevent mutation

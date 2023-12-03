@@ -22,7 +22,7 @@
                         a machine with a bunch of loose wires, a monitor, and what seems like a scanner.
                     </p>
 
-                    <img>
+                    <img src="src/setup.png">
     
                     <p>
                         Stephen continues: "we will be sending some packages using this device right here.
@@ -35,7 +35,7 @@
                         You see a label on the box:
                     </p>
 
-                    <img> (the labels should indicate number of balls, and their odds.)
+                    <img src="src/label.png">
 
                     <p>
                         "A company is ordering some quantum balls for their lucky draw, but they are on the other side of the Earth,"
@@ -48,8 +48,40 @@
 
                 <div class="page" v-show="page === 2">
                     <p>
-                        "We use analysers to encode and decode particle states.
-                        All we need to do is to press a button... damn it, the analyser broke."
+                        "Quantum teleportation? Are you teleporting the lootbox to the other company?" You asked Stephen.
+                    </p>
+
+                    <p>
+                        Stephen chuckled. "Of course not! Would you send the entire hard disk if you want to send an file?
+                        We are merely sending the states of the quantum balls, but not the physical balls."
+                    </p>
+
+                    <p>
+                        "To do that, we will make use of entangled particles. Each of us have particles that are entangled together.
+                        If I measure a particle on my side, the states of the particle on their side will update accordingly. 
+                        This isn't very helpful, as the measurement result is completely random. However, if we mix the entangled particle
+                        and our quantum balls, it will also carry information about our balls."
+                    </p>
+
+                    <p>
+                        "Now, after I measure the entangled particle on my side, I can email the measurement result to the company.
+                        With my measurement results and the entangled particle on their side, 
+                        they can reconstruct the state of the quantum balls!"
+                    </p>
+
+                    <p>
+                        You remember when Stephen mentions that to get the full picture of the entangled particles,
+                        you also need to know the states of the other particle. Maybe this is why you also 
+                        need to send the measurement result.
+                    </p>
+
+                    <img src="src/teleport.png">
+                </div>
+
+                <div class="page" v-show="page === 3">
+                    <p>
+                        "To merge the particles and decode them, we need some kind of analyser.
+                        As you can see, we have one here... damn it, the analyser broke."
                     </p>
 
                     <p>
@@ -67,11 +99,13 @@
                         Rules:<br>
                         <ul>
                             <li>There are three stages. Complete all stages to proceed.</li>
-                            <li>The analyser combines a quantum ball and an entangled particle together.</li>
-                            <li>Your target is to repair the analyser by figuring out the sequence of instructions.</li>
+                            <li>The analyser combines a quantum ball and an entangled particle together to create 
+                                a specific quantum particle.</li>
+                            <li>Your target is to repair the analyser by figuring out the sequence of instructions
+                                used to create such particle.</li>
                             <li>Create the ball on the right by applying the correct sequence of instruction.</li>
-                            <li><i>(Note: All protocols and step names are fictional.)</i></li>
                         </ul>
+                        <i>(Note: All protocols and step names are fictional.)</i>
 
                     <hr width="100%">
 
@@ -139,11 +173,11 @@
                     </div>
                 </div>
 
-                <div class="page" v-show="page === 3">
+                <div class="page" v-show="page === 4">
 
                     <p>
                         "Thank you for fixing the analyser. Now we just need to press this button, 
-                        and the analyser would process the balls and generate an output."
+                        and the analyser would process the balls and generate the output of measurement."
                     </p>
 
                     <div class="terminal2">
@@ -158,7 +192,8 @@
                         <p>
                             "As you can see, we have processed the measurement outputs to make it more human-readable," Stephen said.
 
-                            "Of course, you could just email the zeroes and ones instead, but I thought that making it output text would be more interesting."
+                            "Of course, you could just email the zeroes and ones instead, 
+                            but I thought that making it output text would be more interesting."
                         </p>
 
                         <p>
@@ -167,10 +202,9 @@
     
                         <p>
                             "Oh yeah, we can throw away the balls now. Quantum information cannot be copied,
-                            so the quantum states of the balls are actually transferred to them."
+                            so the quantum states of the balls are actually transferred to them. Now, these balls no longer
+                            contain the original quantum states."
                         </p>
-    
-                        <img>
     
                         <p>
                             The result of the measurement seems really interesting, you decide to 
