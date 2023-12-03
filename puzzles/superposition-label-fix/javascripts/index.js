@@ -1,7 +1,7 @@
 const app = new Vue({
     el: "#app",
     data: {
-        title: "Missing Label",
+        title: "Missing Labels",
         level: 1,
         LEVELMAX: 4,
         text: {

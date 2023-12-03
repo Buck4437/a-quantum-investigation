@@ -20,15 +20,16 @@ Introduction (aka README, explanations, etc.)
 Superposition:
 - Math game / Quantum sokoban? / Quantum Card Game
 
+Assets: 
+- Missing: Unstable crates / Missing Label 1, 2 / Alice and Bob
+
 Unstable Crate:
-- Add asssets
 - Add animation when you measure device (make waveform goes whooooom)
 => When writing solution, say it is inspired by the qubit game?
 
 Alice and Bob's Entanglement
-- Add assets for Alice, Bob, and then somehow express their Entanglement relationship using art / canvas / whatever
+- Somehow express their Entanglement relationship using art / canvas / whatever
 
 Ideas from ChatGPT:
 - Quantum State Manipulation: Players can manipulate objects or elements in the game to exist in superpositions of different states. The objective is to use these superposed states strategically to solve puzzles. For example, a puzzle might require aligning objects in such a way that their superposed states interact constructively to unlock a door or reveal a hidden path.
-- Quantum Marble Puzzle: Objective: The objective of this puzzle is to determine the location of a quantum marble placed in a grid by using clues that involve quantum superposition.
 - Quantum Word Puzzle: Objective: Reveal a hidden word by deducing the correct order of letters based on clues involving quantum superposition.

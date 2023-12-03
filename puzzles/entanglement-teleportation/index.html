@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Loading...</title>
+        <link rel="stylesheet" href="../../global/styles.css">
+        <link rel="stylesheet" href="./stylesheets/styles.css">
+    </head>
+    <body>
+        <div id="app">
+            <base-puzzle :title="title" class="puzzle">
+                <template v-slot:flavour-text>
+                    "I have to send some quantum lootboxes. Can you help me do so?"
+                </template>
+
+                <hr width="100%">
+
+                <div class="page" v-show="page === 1">
+                    <p>
+                        "Do you know that you can teleport quantum states? Sounds cool, right?" 
+                        Stephen brings you to a room that has a sign "Delivery". Both of you sit in front of 
+                        a machine with a bunch of loose wires, a monitor, and what seems like a scanner.
+                    </p>
+
+                    <img>
+    
+                    <p>
+                        Stephen continues: "we will be sending some packages using this device right here.
+                        However, I often run into issues when sending quantum information, so I thought that
+                        you might be interested in joining."
+                    </p>
+                    
+                    <p>
+                        Stephen turns on the monitor, and then he takes out a box from the storage room nearby.
+                        You see a label on the box:
+                    </p>
+
+                    <img> (the labels should indicate number of balls, and their odds.)
+
+                    <p>
+                        "A company is ordering some quantum balls for their lucky draw, but they are on the other side of the Earth,"
+                        Stephen says. 
+                        "We can't just send the balls to them using trucks because the environment is too unstable. 
+                        The states of the balls will probably collapse before reaching the company, and that's not good.
+                        So, we will have to send the states of the ball using quantum teleportation."
+                    </p>
+                </div>
+
+                <div class="page" v-show="page === 2">
+                    <p>
+                        "We use the analysers to do the hard work of encoding and decoding particle states.
+                        All we need to do is to press a button... damn it, the analyser broke."
+                    </p>
+
+                    <p>
+                        "Uh, can you help me with fixing it? 
+                        We have a massively simplified version of the protocol on the computer,
+                        just follow the instructions and it should be fine."
+                    </p>
+
+                    <p>
+                        You look at the terminal.
+                    </p>
+                    
+                    <hr width="100%">
+
+                        Rules:<br>
+                        <ul>
+                            <li>There are three stages. Complete all stages to proceed.</li>
+                            <li>A simplified version of the analyser is shown here.</li>
+                            <li>The analyser combines a quantum ball and an entangled particle together.</li>
+                            <li>Your target is to repair the analyser by figuring out the sequence of instructions.</li>
+                            <li>Create the ball on the right by applying the correct sequence of instruction.</li>
+                        </ul>
+
+                    <hr width="100%">
+
+                    <div class="terminal">
+                        Configuring
+                    </div>
+                </div>
+
+                <div class="page" v-show="page === 3">
+
+                    <p>
+                        "Thank you for fixing the analyser. Now we just need to press this button, 
+                        and the analyser would process the balls and generate an output."
+                    </p>
+
+                    <button>Press button</button>
+
+                    (Show terminal output here)
+
+                    <p>
+                        "As you can see, we have processed the measurement outputs to make it human-friendly.
+                        Normally, it would merely be a bunch of zeroes and ones, " Stephen said.
+
+                        "Now we just need to email them this output, and they would be able to recover the balls!"
+                    </p>
+
+                    <p>
+                        "Oh yeah, we can throw away the balls now. Quantum information cannot be copied,
+                        so the quantum states of the balls are actually transferred to them."
+                    </p>
+
+                    <img>
+
+                    <p>
+                        You notice that the result of the measurement seems really interesting, you decide to 
+                        jot them down in your <span class="password">memo</span>.
+                    </p>
+
+                </div>
+                
+
+                <button v-if="page > 1" @click="page--">Prev</button>
+                <button v-if="page < maxPage" @click="page++">Next</button>
+            </base-puzzle>
+        </div>
+    </body>
+    <script src="../../libraries/vue.js"></script>
+
+    <script src="../../global/BasePuzzle.js"></script>
+    <script src="javascripts/index.js"></script>
+</html>

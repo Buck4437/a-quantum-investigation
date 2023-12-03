@@ -1,0 +1,23 @@
+body {
+    font-size: 16px;
+}
+
+p {
+    text-align: left;
+}
+
+button {
+    margin: 8px;
+    width: 130px;
+    height: 40px;
+}
+
+img {
+    width: 300px;
+    height: 300px;
+}
+
+ul {
+    text-align: left;
+}
+

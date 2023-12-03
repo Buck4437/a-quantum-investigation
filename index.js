@@ -42,7 +42,7 @@ const app = new Vue({
                     answer: "A"
                 },
                 {
-                    name: "Missing Label",
+                    name: "Missing Labels",
                     anchor: "./puzzles/superposition-label-fix/index.html",
                     answer: "B"
                 },
@@ -76,7 +76,7 @@ const app = new Vue({
                     answer: "F"
                 },
                 {
-                    name: "Missing Label 2 (WIP)",
+                    name: "Missing Labels 2",
                     anchor: "./puzzles/entanglement-label-fix-2/index.html",
                     answer: "G"
                 },
@@ -86,7 +86,7 @@ const app = new Vue({
                     answer: "H"
                 },
                 {
-                    name: "IDK (WIP)",
+                    name: "Package Delivery",
                     anchor: "",
                     answer: "I"
                 },
@@ -95,7 +95,7 @@ const app = new Vue({
                 {
                     name: "Farewell (WIP)",
                     anchor: "./puzzles/finale/index.html",
-                    answer: "ANYTIME ANYWHERE"
+                    answer: "UNCERTAINTIES"
                 },
             ]
         }
