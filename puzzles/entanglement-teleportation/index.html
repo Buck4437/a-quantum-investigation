@@ -76,39 +76,65 @@
                     <hr width="100%">
 
                     <div class="terminal">
-                        <div v-if="level <= LEVELMAX">
-                            Configuring Protocol {{level}} / 3:<br>
-                        
-                            Initial Ball State: {{initialState.ball[0]}} / {{initialState.ball[1]}}<br>
-                            Initial Entangled Particle: {{initialState.entangled[0]}} / {{initialState.entangled[1]}}<br>
-                            Procedure:<br>
-                            <ul>
-                                <li v-for="i in 4">Step {{i}}: 
-                                    <template v-if="!isCorrect">
-                                        <select v-model="steps[i - 1]">
-                                            <option value="-1">---</option>
-                                            <option v-for="i in 3" :value="i - 1">{{stepName[i-1]}}</option>
-                                        </select>
-                                    </template>
-                                    <template v-else>
-                                        {{steps[i - 1] === -1 ? "---" : stepName[steps[i - 1]]}}
-                                    </template>
-                                </li>
-                                <li>Step 5: Merge</li>
-                            </ul>
-                            Final Product: {{output[0]}} / {{output[1]}}<br>
-                            Target Product: {{target[0]}} / {{target[1]}}<br>
+                        <div v-if="level <= LEVELMAX" class="terminal-item-con">
+                            <div class="level-display">
+                                Configuring Protocol {{level}} / 3
+                            </div>
 
+                            <div class="terminal-main-display-con">
+                                <div class="terminal-panels">
+                                    <div class="terminal-section-header">Initial state</div>
+                                    <div class="ball-display">
+                                        {{initialState.ball[0]}} / {{initialState.ball[1]}}
+                                    </div>
+                                    <div class="terminal-section-header">Ball</div>
+                                    <div class="ball-display gy">
+                                        {{initialState.entangled[0]}} / {{initialState.entangled[1]}}
+                                    </div>
+                                    <div class="terminal-section-header">Entangled Particle</div>
+                                </div>
+                                <div class="procedure-con">
+                                    Procedure:
+                                    <ul>
+                                        <li v-for="i in 4">Step {{i}}: 
+                                            <template v-if="!isCorrect">
+                                                <select v-model="steps[i - 1]">
+                                                    <option value="-1">---</option>
+                                                    <option v-for="i in 3" :value="i - 1">{{stepName[i-1]}}</option>
+                                                </select>
+                                            </template>
+                                            <template v-else>
+                                                {{steps[i - 1] === -1 ? "---" : stepName[steps[i - 1]]}}
+                                            </template>
+                                        </li>
+                                        <li>Step 5: Merge</li>
+                                    </ul>
+                                </div>
+
+                                <div class="terminal-panels">
+                                    <div class="terminal-section-header">Outputs</div>
+                                    <div class="ball-display end" :class="{'flash': flashTimer > 0}">
+                                        {{output[0]}} / {{output[1]}}
+                                    </div>
+                                    <div class="terminal-section-header">Current</div>
+                                    <div class="ball-display end">
+                                        {{target[0]}} / {{target[1]}}
+                                    </div>
+                                    <div class="terminal-section-header">Target</div>
+                                </div>
+                            </div>
+                        
+                            <span v-show="!isCorrect" class="red">{{timer > 0 ? "Calibration failed" : "Status: Unsynced"}}</span>
+                            <span v-show="isCorrect" class="green">Status: Synced</span>
                             <button v-show="!isCorrect" @click="submit">
-                                Submit
+                                Calibrate
                             </button>
-                            <span v-show="isCorrect" class="green">Correct!</span>
                             <button v-show="isCorrect" @click="next">
                                 Next
                             </button>
                         </div>
-                        <div v-else>
-                            Configuration Complete.
+                        <div v-else class="terminal-done">
+                            <span>Configuration Complete.</span>
                         </div>
                     </div>
                 </div>
@@ -120,19 +146,22 @@
                         and the analyser would process the balls and generate an output."
                     </p>
 
-                    <div>
+                    <div class="terminal2">
                         <span v-if="!buttonPressed">Awaiting confirmation...</span>
-                        <span v-else>Measurement success. 
-                            Parsed measurement result: "<span class="password">{{password}}</span>"</span>
+                        <span v-else>Teleportation complete. 
+                            Measurement result:<br>110010100101 => <span class="password">{{password}}</span></span>
                     </div>
 
-                    <button @click="buttonPressed = true">Press button</button>
+                    <button v-if="!buttonPressed" @click="buttonPressed = true">Confirm</button>
 
                     <template v-if="buttonPressed">
                         <p>
-                            "As you can see, we have processed the measurement outputs to make it human-friendly.
-                            Normally, it would merely be a bunch of zeroes and ones, " Stephen said.
-    
+                            "As you can see, we have processed the measurement outputs to make it more human-readable," Stephen said.
+
+                            "Of course, you could just email the zeroes and ones instead, but I thought that making it output text would be more interesting."
+                        </p>
+
+                        <p>
                             "Now we just need to email them this output, and they would be able to recover the balls!"
                         </p>
     
@@ -151,9 +180,11 @@
 
                 </div>
                 
-
-                <button v-if="page > 1" @click="page--">Prev</button>
-                <button v-if="page < maxPage" @click="page++">Next</button>
+                <hr width="100%">
+                <div>
+                    <button :class="{'invisible': page <= 1}" @click="page--">Prev Page</button>
+                    <button :class="{'invisible': page >= maxPage}" @click="page++">Next Page</button>
+                </div>
             </base-puzzle>
         </div>
     </body>

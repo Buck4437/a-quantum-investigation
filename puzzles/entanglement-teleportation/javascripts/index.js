@@ -10,14 +10,31 @@ const app = new Vue({
         steps: [-1, -1, -1, -1],
         isCorrect: false,
         stepName: ["Swap", "Amplify", "Sum"],
-
+        timer: 0,
+        flashTimer: 0,
 
         buttonPressed: false
+    },
+    watch: {
+        steps: {
+            deep: true,
+            handler() {
+                this.flashTimer++;
+                setTimeout(() => {
+                    this.flashTimer--;
+                }, 100);
+            }
+        }
     },
     methods: {
         submit() {
             if (this.correctness === true) {
                 this.isCorrect = true;
+            } else {
+                this.timer ++;
+                setTimeout(() => {
+                    this.timer--;
+                }, 3000);
             }
         },
         next() {

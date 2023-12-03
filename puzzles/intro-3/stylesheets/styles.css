@@ -35,6 +35,8 @@ img {
     padding: 8px;
 
     -webkit-animation: redBlue 4s ease infinite;
+    -moz-animation: redBlue 4s ease infinite;
+    animation: redBlue 4s ease infinite;
 }
 
 .red {
@@ -46,6 +48,22 @@ img {
 }
 
 @-webkit-keyframes redBlue {  
+    0% { color: red; } 
+    10% { color: red; }
+    50% { color: rgb(99, 99, 252); }
+    60% { color: rgb(99, 99, 252); }
+    100% { color: red; }
+}
+
+@-moz-keyframes redBlue {  
+    0% { color: red; } 
+    10% { color: red; }
+    50% { color: rgb(99, 99, 252); }
+    60% { color: rgb(99, 99, 252); }
+    100% { color: red; }
+}
+
+@keyframes redBlue {  
     0% { color: red; } 
     10% { color: red; }
     50% { color: rgb(99, 99, 252); }
