@@ -23,13 +23,10 @@ Polishing:
 - Package Delivery (!!!)
 
 Assets: 
-- Missing: Unstable crates / Missing Label 1, 2 / Alice and Bob / Package Delivery
+- Missing: Unstable crates / Missing Label 1, 2 / Alice and Bob
 
 Unstable Crate:
 - Add animation when you measure device (make waveform goes whooooom)
-=> When writing solution, say it is inspired by the qubit game?
 
 Alice and Bob's Entanglement
 - Somehow express their Entanglement relationship using art / canvas / whatever
-
-Graphics can come later.
