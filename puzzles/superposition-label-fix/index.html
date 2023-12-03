@@ -57,7 +57,7 @@
                                 <span class="box-label">Label</span>
                                 <table>
                                     <tr v-for="r in curRows">
-                                        <td v-for="c in curCols" :class="getLabelDisplayColour(r, c)" @click="select(r, c)">
+                                        <td v-for="c in curCols" :class="[getLabelDisplayColour(r, c), (correct ? 'correct' : '')]" @click="select(r, c)">
                                             {{getLabelDisplay(r, c)}}
                                         </td>
                                     </tr>
@@ -65,7 +65,7 @@
                                 <div v-show="correct" class="right">
                                     Correct! <button @click="proceed">Proceed</button>
                                 </div>
-                                <div class="button-con">
+                                <div v-show="!correct" class="button-con">
                                     <button @click="resetSelection">Reset Selection</button>
                                     <button @click="submit">Submit</button>
                                 </div>

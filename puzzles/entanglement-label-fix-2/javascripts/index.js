@@ -1,24 +1,27 @@
 const app = new Vue({
     el: "#app",
     data: {
-        title: "Missing Label",
+        title: "Missing Label 2",
         level: 1,
-        LEVELMAX: 4,
+        LEVELMAX: 7,
         text: {
             password: "PLACEHOLDER"
         },
         answers: [
-            ("1X3X5\n" +
-            "2X4X6").split("\n").map(x => x.split("")),
-            ("1X5\n" +
-            "2X6\n" +
-            "34X").split("\n").map(x => x.split("")),
-            ("12X\n" +
-            "X34\n" +
-            "56X").split("\n").map(x => x.split("")),
-            ("X34X\n" +
-            "1256\n" +
-            "XXXX").split("\n").map(x => x.split("")),
+            ("X12").split("\n").map(x => x.split("")),
+            ("X1\n" +
+             "X2").split("\n").map(x => x.split("")),
+            ("XXX\n" +
+             "X12").split("\n").map(x => x.split("")),
+            ("34X\n" +
+             "X12").split("\n").map(x => x.split("")),
+            ("2XXX\n" +
+             "1X34").split("\n").map(x => x.split("")),
+            ("X564\n" +
+             "12X3").split("\n").map(x => x.split("")),
+            ("2X56\n" +
+             "1X3X\n" +
+             "XX4X").split("\n").map(x => x.split(""))
         ],
         highlighted: [-1, -1],
         pairs: {
@@ -31,6 +34,18 @@ const app = new Vue({
         wrongTimer: 0
     },
     computed: {
+        maxPair() {
+            switch (this.level) {
+                case 1: 
+                case 2:
+                case 3: return 1;
+                case 4:
+                case 5: return 2;
+                case 6:
+                case 7: return 3;
+            }
+            return 1;
+        },
         curRows() {
             if (this.level > this.LEVELMAX) {
                 return 0;
@@ -43,9 +58,9 @@ const app = new Vue({
             }
             return this.answers[this.level - 1][0].length;
         },
-        threePairsFormed() {
-            for (let key of Object.keys(this.pairs)) {
-                const pair = this.pairs[key];
+        allPairsFormed() {
+            for (let i = 1; i <= this.maxPair; i++) {
+                const pair = this.pairs[i];
                 if (pair[0][0] === -1) {
                     return false;
                 }
@@ -80,7 +95,7 @@ const app = new Vue({
             if (this.isHighlighted(r, c)) {
                 return "yellow";
             }
-            if (this.threePairsFormed) {
+            if (this.allPairsFormed) {
                 return "grey";
             }
             return "";
@@ -92,28 +107,42 @@ const app = new Vue({
             }
             return "";
         },
-        getCellDisplay(r, c) {
-            if (this.level > this.LEVELMAX || this.seed == -1) {
+        getBallColour(r, c) {
+            if (this.seed === -1) {
                 return "";
             }
             const cell = this.answers[this.level - 1][r - 1][c - 1];
+            const flooredSeed = Math.floor(this.seed % 8);
             switch (cell) {
                 case "X":
-                    return "";
+                    return this.hash(r * 97 + c * 7) === 1 ? "red-color" : "blue-color";
                 case "1":
                 case "2":
-                    return String(this.seed % 2 + 1) === cell ? "O" : "";
+                    return Math.floor(this.seed) % 2 === 1 ? "red-color" : "blue-color";
                 case "3":
                 case "4":
-                    return String(Math.floor(this.seed / 2) % 2 + 3) === cell ? "O" : "";
+                    return Math.floor(this.seed / 2) % 2 === 1 ? "red-color" : "blue-color";
                 case "5":
                 case "6":
-                    return String(Math.floor(this.seed / 4) % 2 + 5) === cell ? "O" : "";
+                    return Math.floor(this.seed / 4) % 2 === 1 ? "red-color" : "blue-color";
             }
+        },
+        // gives 0 or 1
+        hash(x) {
+            const seed = this.seed;
+            const phi = (Math.sqrt(5) + 1) / 2;
+            const val = ((x ** 2 + seed * Math.sin(seed)) * phi - Math.floor((x ** 2 + seed * Math.sin(seed)) * phi));
+            return (String(Math.floor(val * 100000)).split("").map(x => Number(x)).reduce((a, b) => a + b, 0)) % 2
+        },
+        getCellDisplay() {
+            if (this.level > this.LEVELMAX || this.seed == -1) {
+                return "";
+            }
+            return "O";
         },
         measure() {
             if (this.seed === -1) {
-                this.seed = Math.floor(Math.random() * 8);
+                this.seed = Math.random() * 8 * 2 ** 20;
             }
         },
         reset() {
@@ -122,13 +151,17 @@ const app = new Vue({
             }
         },
         select(r, c) {
+            if (this.correct) {
+                return;
+            }
             const data = this.selected(r, c)
             // No cell selected
             if (this.highlighted[0] === -1) {
                 // This cell is marked: Remove the pair
                 if (data[0] === true) {
                     this.pairs[data[1]] = [[-1, -1], [-1, -1]];
-                } else if (this.threePairsFormed) {
+                    return;
+                } else if (this.allPairsFormed) {
                     return;
                 }
                 this.highlighted = [r, c];
@@ -153,6 +186,9 @@ const app = new Vue({
             }
         },
         resetSelection() {
+            if (this.correct) {
+                return;
+            }
             for (let prop of Object.keys(this.pairs)) {
                 this.pairs[prop] = [[-1, -1], [-1, -1]];
             }
@@ -161,17 +197,21 @@ const app = new Vue({
         submit() {
             if (this.isCorrect()) {
                 this.correct = true;
+                this.wrongTimer = 0;
             } else {
                 this.wrongTimer++;
                 setTimeout(() => {
                     this.wrongTimer--;
+                    if (this.wrongTimer < 0) {
+                        this.wrongTimer = 0;
+                    }
                 }, 3000);
             }
             
         },
         isCorrect() {
-            for (let prop of Object.keys(this.pairs)) {
-                const pair = this.pairs[prop];
+            for (let i = 1; i <= this.maxPair; i++) {
+                const pair = this.pairs[i];
                 if (pair[0][0] === -1) {
                     return false;
                 }

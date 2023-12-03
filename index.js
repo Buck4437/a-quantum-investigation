@@ -59,13 +59,13 @@ const app = new Vue({
             ],
             interlude: [
                 {
-                    name: "Second Glimpse into Quantum (WIP)",
-                    anchor: "./puzzles/interlude/index.html",
+                    name: "Second Glimpse into Quantum",
+                    anchor: "./puzzles/interlude-1/index.html",
                     answer: "ENTANGLED"
                 },
                 {
                     name: "Entanglement",
-                    anchor: "./puzzles/interlude/index.html",
+                    anchor: "./puzzles/interlude-2/index.html",
                     answer: "SPOOKY"
                 },
             ],
@@ -77,7 +77,7 @@ const app = new Vue({
                 },
                 {
                     name: "Missing Label 2 (WIP)",
-                    anchor: "./puzzles/superposition-rin/index.html",
+                    anchor: "./puzzles/entanglement-label-fix-2/index.html",
                     answer: "G"
                 },
                 {
@@ -131,7 +131,7 @@ const app = new Vue({
             return this.solves.superposition.map(x => x ? 1 : 0).reduce((a, b) => a + b, 0) >= 2;
         },
         unlockedMeta() {
-            return this.solves.entanglement.map(x => x ? 1 : 0).reduce((a, b) => a + b, 0) >= 4;
+            return this.solves.entanglement.map(x => x ? 1 : 0).reduce((a, b) => a + b, 0) >= 2;
         }
     },
     methods: {

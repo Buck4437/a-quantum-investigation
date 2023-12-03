@@ -59,6 +59,10 @@ td {
     cursor: pointer;
 }
 
+.selection-con td.correct {
+    cursor: default;
+}
+
 .unopened {
     background-color: rgb(161, 161, 161);
     color: black;

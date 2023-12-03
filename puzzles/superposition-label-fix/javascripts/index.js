@@ -122,12 +122,16 @@ const app = new Vue({
             }
         },
         select(r, c) {
+            if (this.correct) {
+                return;
+            }
             const data = this.selected(r, c)
             // No cell selected
             if (this.highlighted[0] === -1) {
                 // This cell is marked: Remove the pair
                 if (data[0] === true) {
                     this.pairs[data[1]] = [[-1, -1], [-1, -1]];
+                    return;
                 } else if (this.threePairsFormed) {
                     return;
                 }
@@ -153,6 +157,9 @@ const app = new Vue({
             }
         },
         resetSelection() {
+            if (this.correct) {
+                return;
+            }
             for (let prop of Object.keys(this.pairs)) {
                 this.pairs[prop] = [[-1, -1], [-1, -1]];
             }
@@ -161,13 +168,16 @@ const app = new Vue({
         submit() {
             if (this.isCorrect()) {
                 this.correct = true;
+                this.wrongTimer = 0;
             } else {
                 this.wrongTimer++;
                 setTimeout(() => {
                     this.wrongTimer--;
+                    if (this.wrongTimer < 0) {
+                        this.wrongTimer = 0;
+                    }
                 }, 3000);
             }
-            
         },
         isCorrect() {
             for (let prop of Object.keys(this.pairs)) {

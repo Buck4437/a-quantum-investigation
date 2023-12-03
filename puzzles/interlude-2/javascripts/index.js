@@ -1,7 +1,7 @@
 const app = new Vue({
     el: "#app",
     data: {
-        title: "Second Glimpse into Quantum",
+        title: "Entanglement",
         seed: -1,
         seed2: -1,
         seed3: -1

@@ -10,7 +10,7 @@
         <div id="app">
             <base-puzzle :title="title" class="puzzle">
                 <template v-slot:flavour-text>
-                    I lost the labels for these packages. Can you fix them for me?
+                    I have also lost the labels for these packages. Can you fix them for me?
                 </template>
 
                 <hr width="100%">
@@ -18,15 +18,15 @@
                 <div class="rules">
                     Rules:<br>
                     <ul>
-                        <li>There are four levels in total.</li>
-                        <li>Each level consists a package with three quantum balls.</li>
-                        <li>The three quantum balls are in a superposition state of two <b>orthogonically adjacent</b> locations.</li>
-                        <li>Your target is to restore the original states of the label.</li>
+                        <li>There are seven levels in total.</li>
+                        <li>Your target is to identify all pairs of entangled balls in each package.</li>
+                        <li>In each level, there are a number of pairs of entangled balls. The balls are <b>orthogonically adjacent</b>, and they always have the <b>same state</b>.</li>
+                        <li>There are also other balls which are not entangled with any balls.</li>
                         <li>You can open the package to gain information on the positions of the balls. 
-                            After opening the package, you can reset the package back to the superposition states.</li>
-                        <li>To label a ball, click on the two cells that a ball is in superposition state of.</li>
+                            After opening the package, you can reset the package back to the original states.</li>
+                        <li>To label a pair, click on the two cells that the entangled balls are at.</li>
                         <li>Clicking on a labelled cell will remove the connection.</li>
-                        <li>Hint: Measure multiple times to determine the possible positions of the balls!</li>
+                        <li>Hint: Measure multiple times to rule out balls that cannot be entangled!</li>
                     </ul>
                 </div>
                 
@@ -36,14 +36,15 @@
                 <div class="game">
                     <template v-if="level <= LEVELMAX">
                         <div class="level-display">Level {{level}}</div>
+                        <div class="pair-display">Entangled Pairs: {{this.maxPair}}</div>
 
                         <div class="main-game-content">
                             <div class="box-con">
                                 <span class="box-label">Box</span>
                                 <table>
                                     <tr v-for="r in curRows">
-                                        <td v-for="c in curCols" :class="{ unopened: seed === -1}">
-                                            {{getCellDisplay(r, c)}}
+                                        <td v-for="c in curCols" :class="[getBallColour(r, c), seed === -1 ? 'unopened' : '']">
+                                            {{getCellDisplay()}}
                                         </td>
                                     </tr>
                                 </table>
@@ -57,7 +58,7 @@
                                 <span class="box-label">Label</span>
                                 <table>
                                     <tr v-for="r in curRows">
-                                        <td v-for="c in curCols" :class="getLabelDisplayColour(r, c)" @click="select(r, c)">
+                                        <td v-for="c in curCols" :class="[getLabelDisplayColour(r, c), (correct ? 'correct' : '')]" @click="select(r, c)">
                                             {{getLabelDisplay(r, c)}}
                                         </td>
                                     </tr>
@@ -65,7 +66,7 @@
                                 <div v-show="correct" class="right">
                                     Correct! <button @click="proceed">Proceed</button>
                                 </div>
-                                <div class="button-con">
+                                <div v-show="!correct" class="button-con">
                                     <button @click="resetSelection">Reset Selection</button>
                                     <button @click="submit">Submit</button>
                                 </div>

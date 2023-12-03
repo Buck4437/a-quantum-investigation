@@ -76,6 +76,8 @@
                     <template v-if="solves.interlude[1]">
                         <div class="section">Entanglement</div>
 
+                        <i>"With your further understanding of quantum, I hope you can help me solve these problems."</i>
+                        
                         <ul>
                             <li v-for="(link, i) in links.entanglement">
                                 <a :href="link.anchor" target="_blank">{{link.name}}</a>
@@ -83,7 +85,7 @@
                             </li>
                         </ul>
        
-                        <template v-if="!unlockedInterlude2">
+                        <template v-if="!unlockedMeta">
                             Solve 2 puzzles in this section to proceed.
                         </template>
                         

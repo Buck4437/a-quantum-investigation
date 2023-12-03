@@ -12,7 +12,7 @@ ul {
     text-align: left;
 }
 
-.level-display {
+.level-display, .pair-display {
     margin-bottom: 16px;
 }
 
@@ -59,9 +59,21 @@ td {
     cursor: pointer;
 }
 
+.selection-con td.correct {
+    cursor: default;
+}
+
 .unopened {
     background-color: rgb(161, 161, 161);
     color: black;
+}
+
+.red-color {
+    color: red;
+}
+
+.blue-color {
+    color: #7979d1;
 }
 
 .red {
