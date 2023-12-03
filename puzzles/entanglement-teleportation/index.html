@@ -122,7 +122,8 @@
 
                     <div>
                         <span v-if="!buttonPressed">Awaiting confirmation...</span>
-                        <span v-else>Measurement result: <span class="password">{{password}}</span></span>
+                        <span v-else>Measurement success. 
+                            Parsed measurement result: "<span class="password">{{password}}</span>"</span>
                     </div>
 
                     <button @click="buttonPressed = true">Press button</button>
@@ -143,7 +144,7 @@
                         <img>
     
                         <p>
-                            You notice that the result of the measurement seems really interesting, you decide to 
+                            The result of the measurement seems really interesting, you decide to 
                             jot it down in your <span class="password">memo</span>.
                         </p>
                     </template>

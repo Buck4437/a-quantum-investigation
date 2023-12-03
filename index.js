@@ -44,7 +44,7 @@ const app = new Vue({
                 {
                     name: "Missing Labels",
                     anchor: "./puzzles/superposition-label-fix/index.html",
-                    answer: "B"
+                    answer: "MEASURES"
                 },
                 {
                     name: "Unstable Crates",
