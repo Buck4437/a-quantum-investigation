@@ -53,3 +53,38 @@ a, a:hover, a:visited, a:active {
     height: 50px;
     text-align: center;
 }
+
+/* For meta */
+.clue {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 16px;
+}
+
+.clue-boxes-con {
+    display: inline-block;
+}
+
+.clue-name {
+    font-size: 14px;
+    padding-right: 16px;
+    width: 100px;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;    
+    display: inline-block;
+    border: 2px solid white;
+    margin-right: 4px;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    font-size: 20px;
+}
+
+.meta .password {
+    border-color: aqua;
+    color: aqua;
+}

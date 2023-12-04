@@ -29,7 +29,7 @@
 
                 <solution-display title="Inviting Rin">
                     <p>
-                        This puzzle requires the solver to alter the possibility to exactly 100%. 
+                        This puzzle requires us to alter the possibility to exactly 100%. 
                         A technique for doing so is to work in reverse and deduce the possible solve paths.
                     </p>
                     <p>
@@ -39,18 +39,24 @@
                         1 (+7) -> 8 (x1.5) -> 12 (x1.5) -> 18 (x1.5) -> 27 (x1.5) -> 40 (x1.5) -> 60 (+7) -> 67 (x1.5) -> 100
                     </p>
                     <p>
-                        After solving the puzzle, the solver would obtain the answer <span class="password">CAMPING</span>.
+                        After solving the puzzle, we would obtain the answer <span class="password">CAMPING</span>.
+                    </p>
+                    <p>
+                        Afterwords: This puzzle is meant to introduce an analogy of quantum superposition: 
+                        that asking a question is like a measurement, and we can change the answer before
+                        measurement. I hope that the probability meter suggests some degree of uncertainty
+                        from Rin, rather than a direct change from "No" to "Yes".
                     </p>
                 </solution-display>
 
                 <solution-display title="Missing Labels" class="label-sol">
                     <p>
-                        This puzzle requires the solver to deduce the superposition states of the quantum balls.
+                        This puzzle requires us to deduce the superposition states of the quantum balls.
                         As each quantum ball can only be at one location at a time,
-                        the solver must repeatly measure and reset the box.
+                        we must repeatly measure and reset the box.
                     </p>
                     <p>
-                        After obtaining all possible locations, the solver can use the fact that,
+                        After obtaining all possible locations, we can use the fact that,
                         each pair of location must be orthogonically adjacent, to match up the locations 
                         of the balls. 
                     </p>
@@ -71,14 +77,20 @@
                     </div>
                     
                     <p>
-                        After solving the puzzle, the solver would obtain the answer <span class="password">MEASURES</span>.
+                        After solving the puzzle, we would obtain the answer <span class="password">MEASURES</span>.
+                    </p>
+                    
+                    <p>
+                        Afterwords: This puzzle uses locations of balls as superposition states, rather than
+                        colours or sizes. I hope that this conveys the message that superposition can apply
+                        to different property of items.
                     </p>
                 </solution-display>
 
                 <solution-display title="Unstable Crates">
                     <p>
-                        This puzzle requires the solver to stabilise five crates using interference.
-                        The solver needs to match the waveform of the stable state, and match the inversion
+                        This puzzle requires us to stabilise five crates using interference.
+                        We need to match the waveform of the stable state, and match the inversion
                         of the unstable state.
                     </p>
                     <p>
@@ -96,7 +108,15 @@
                         If the frequencies are close enough, then it would count as correct.
                     </p>
                     <p>
-                        After solving the puzzle, the solver would obtain the answer <span class="password">COLLAPSE</span>.
+                        After solving the puzzle, we would obtain the answer <span class="password">COLLAPSE</span>.
+                    </p>
+
+                    <p>
+                        Afterwords: The wave mechanic is inspired by <a href="https://quantumai.google/education/thequbitgame"  target="_blank">The Qubit Game</a>. 
+                        I want to introduce the concept of quantum interference, 
+                        which works tightly with superposition to create quantum computer.
+                        I also want to use the constructive and destructive interference of waves 
+                        as an analogy of quantum interference, which leads to the current form of the puzzle. 
                     </p>
                 </solution-display>
 
@@ -114,7 +134,7 @@
 
                 <solution-display title="Alice and Bob's entanglement">
                     <p>
-                        This puzzle tells the solver that Alice's and Bob's minds are entangled, 
+                        This puzzle tells us that Alice's and Bob's minds are entangled, 
                         suggesting some kind of relationship between them. If we press "Give Up", 
                         the puzzle will show the correct answer, which gives us information to 
                         deduce the entanglement relationship between Alice and Bob.
@@ -134,14 +154,146 @@
                     <p>
                         Level 4: The first two bits of Alice's and Bob's bit string are equal. 
                         The last three bits of Alice's and Bob's bit string are flipped. (e.g. if Alice's
-                        bit string is "00000", then Bob's bit string is become "00111").
+                        bit string is "00000", then Bob's bit string is "00111").
                     </p>
                     <p>
-                        After solving the puzzle, the solver would obtain the answer <span class="password">TOGETHER</span>.
+                        After solving the puzzle, we would obtain the answer <span class="password">TOGETHER</span>.
+                    </p>
+
+                    <p>
+                        Afterwords: this analogy is used to introduce the basic concepts of entanglement, 
+                        that two objects can be related in some form. This also suggest that after
+                        measurement, we can use the entanglement relationship to deduce the 
+                        state of both entangled particles, as long as we know the definite state of any one of them.
                     </p>
                 </solution-display>
 
-                
+                <solution-display title="Missing Labels 2" class="label-sol">
+                    <p>
+                        This puzzle requires us to deduce the pairs of balls that are entangled, among
+                        other quantum balls that are not entangled. To deduce the entanglement relationship,
+                        we must repeatly measure and reset the box, and observe balls that always share
+                        the same state.
+                    </p>
+                    <p>
+                        A technique of solving the puzzle is to draw a grid and put a line between two balls
+                        that have different colour. One can repeatly measure and reset the box, 
+                        adding new lines until there remains only the specified
+                        number of pairs.
+                    </p>
+                    <p>
+                        The solution for each puzzle is as follows (note that colours can be swapped):
+                    </p>
+                    <div v-for="(array, i) in answers.label2" class="answer-list">
+                        <p>
+                            Box {{i + 1}}
+                        </p>
+                        <table>
+                            <tr v-for="row in array">
+                                <td v-for="cell in row" :class="labelGetData(cell).class">
+                                    {{labelGetData(cell).text}}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <p>
+                        After solving the puzzle, we would obtain the answer <span class="password">LINKED</span>.
+                    </p>
+
+                    <p>
+                        Afterwords: this requires a better understanding of entanglement. I hope that solvers
+                        can use the knowledge of entanglement to solve this puzzles.
+                    </p>
+                </solution-display>
+
+                <solution-display title="Package Delivery">
+                    <p>
+                        In this puzzle, we need to deliver quantum balls using quantum teleportation.
+                        However, the analyser broke down and we would need to fix it.
+                    </p>
+                    <p>
+                        The initial state of the two particles are 0/1 and A/B.
+                        We need to produce the specified output by using the given procedures.
+                        After experimentation, we can deduce what the procedures perform:
+                    </p>
+                    <ul>
+                        <li>"Swap" swaps the two states of the quantum ball.</li>
+                        <li>"Amplify" multiplies the two states of the quantum ball by 2.</li>
+                        <li>"Sum" adds the second state of the quantum ball to the first state.</li>
+                        <li>"Merge" generates all possible state combination of the two particles. This information
+                            isn't needed to solve the puzzle.
+                        </li>
+                    </ul>
+                    <p>
+                        Here are the procedures needed to calibrate each protocol:
+                    </p>
+                    <p>
+                        Protocol 1: Swap, Amplify
+                    </p>
+                    <p>
+                        Protocol 2: Sum, Sum, Swap
+                    </p>
+                    <p>
+                        Protocol 3: Sum, Sum, Sum, Amplify 
+                    </p>
+                    <p>
+                        After solving the puzzle, we would unlock the last page of the puzzle.
+                        The terminal would display the measurement result,
+                        as well as a formatted string: "<span class="password">TRANSMISSION</span>".
+                        This is the answer to this puzzle.
+                    </p>
+
+                    <p>
+                        Afterwords: the presentation of this puzzle is quite different from others, since 
+                        it is a half-story, half-puzzle hybrid. I want to introduce the concept of
+                        quantum teleportations, but I find that crafting a puzzle around it is
+                        very difficult. So, I settled on this alternative. Still, I hope that this 
+                        won't distract the solver from understanding quantum teleportation.
+                    </p>
+                </solution-display>
+
+                <solution-display title="Goodbye">
+                    <p>
+                        This is a metapuzzle. That is, this puzzle uses all answers you have 
+                        obtained from the previous puzzles.
+                    </p>
+
+                    <p>
+                        The actual solution can be found here. Note that this will also spoil all answers of 
+                        previous puzzles.
+                    </p>
+
+                    <solution-display title="Actual Solution" class="meta">
+                        <p>
+                            We are given a list of blanks, with the title of each puzzle next to it.
+                        </p>
+                        <p>
+                            Notice the number of blanks matches the length of our answers, so we should place our answers
+                            inside the grid:
+                        </p>
+                        <div v-for="clue in answers.meta" class="clue">
+                            <span class="clue-name password">{{clue.name}}</span>
+                            <div class="clue-boxes-con">
+                                <div v-for="i in clue.length" :class="{'password': i === clue.index}" class="cell">
+                                    <span>{{clue.answer.charAt(i - 1)}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p>
+                            Reading the aqua-coloured cells, we get our final answer, <span class="password">UNCERTAINTY</span>.
+                        </p>
+                        <p>
+                            Afterwords: I like metapuzzles, and I hope you would 
+                            like it (and the horrible answer) too.
+                        </p>
+                        <p>
+                            It is also possible to guess the final answer even if we don't have all answers. 
+                            This is an intended part of the puzzle as this allows solvers to finish the puzzle
+                            even if they don't have all solves.
+                        </p>
+                    </solution-display>
+                </solution-display>
+
             </base-puzzle>
         </div>
     </body>

@@ -60,11 +60,11 @@
                         "To do that, we will make use of entangled particles. Each of us have particles that are entangled together.
                         If I measure a particle on my side, the states of the particle on their side will update accordingly. 
                         This isn't very helpful, as the measurement result is completely random. However, if we mix the entangled particle
-                        and our quantum balls, it will also carry information about our balls."
+                        and our quantum balls, we can generate qubits that also carry information about our balls."
                     </p>
 
                     <p>
-                        "Now, after I measure the entangled particle on my side, I can email the measurement result to the company.
+                        "Now, after I measure the processed qubits on my side, I can email the measurement result to the company.
                         With my measurement results and the entangled particle on their side, 
                         they can reconstruct the state of the quantum balls!"
                     </p>
@@ -75,19 +75,23 @@
                         need to send the measurement result.
                     </p>
 
+                    <p>
+                        "As a side note, even though state collapse is instantaneous, 
+                        we aren't delivering quantum information beyond the speed of light," Stephen adds.
+                        "We still need to send the measurement results for them to decode the qubits."
+                    </p>
+
                     <img src="src/teleport.png">
                 </div>
 
                 <div class="page" v-show="page === 3">
                     <p>
-                        "To merge the particles and decode them, we need some kind of analyser.
+                        "To combine that states of the particles, we need some kind of analyser.
                         As you can see, we have one here... damn it, the analyser broke."
                     </p>
 
                     <p>
-                        "Uh, can you help me with fixing it? 
-                        We have a massively simplified version of the protocol on the computer,
-                        just follow the instructions and it should be fine."
+                        "Uh, can you help me with fixing it? Follow the instructions and it should be fine."
                     </p>
 
                     <p>
@@ -98,9 +102,9 @@
 
                         Rules:<br>
                         <ul>
-                            <li>There are three stages. Complete all stages to proceed.</li>
+                            <li>There are three protocols. Fix all protocols to proceed.</li>
                             <li>The analyser combines a quantum ball and an entangled particle together to create 
-                                a specific quantum particle.</li>
+                                qubits with a combined states.</li>
                             <li>Your target is to repair the analyser by figuring out the sequence of instructions
                                 used to create such particle.</li>
                             <li>Create the ball on the right by applying the correct sequence of instruction.</li>
@@ -148,11 +152,11 @@
                                 <div class="terminal-panels">
                                     <div class="terminal-section-header">Outputs</div>
                                     <div class="ball-display end" :class="{'flash': flashTimer > 0}">
-                                        {{output[0]}} / {{output[1]}}
+                                        {{output.join(" / ")}}
                                     </div>
                                     <div class="terminal-section-header">Current</div>
                                     <div class="ball-display end">
-                                        {{target[0]}} / {{target[1]}}
+                                        {{target.join(" / ")}}
                                     </div>
                                     <div class="terminal-section-header">Target</div>
                                 </div>

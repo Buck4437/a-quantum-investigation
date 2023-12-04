@@ -49,19 +49,23 @@ const app = new Vue({
     computed: {
         correctness() {
             const newState = this.output;
-            return newState[0] === this.target[0] && newState[1] === this.target[1];
+            return (
+                newState[0] === this.target[0] 
+                && newState[1] === this.target[1]
+                && newState[2] === this.target[2]
+                && newState[3] === this.target[3]);
         },
         target() {
             switch (this.level) {
                 // Suggested solution: Swap, Amplify
                 case 1:
-                    return ["2A", "0B"];
+                    return ["2A", "2B", "0A", "0B"];
                 // Suggested solution: Sum, Sum, Swap
                 case 2:
-                    return ["1A", "2B"];
+                    return ["1A", "1B", "2A", "2B"];
                 // Suggested solution: Sum, Sum, Sum, Amplify 
                 case 3:
-                    return ["6A", "2B"];
+                    return ["6A", "6B", "2A", "2B"];
             }
             return ["", ""]
         },
@@ -104,7 +108,12 @@ const app = new Vue({
                     }   
                 }
             }
-            return [String(state.ball[0]) + state.entangled[0], String(state.ball[1]) + state.entangled[1]]
+            return [
+                String(state.ball[0]) + state.entangled[0], 
+                String(state.ball[0]) + state.entangled[1],
+                String(state.ball[1]) + state.entangled[0], 
+                String(state.ball[1]) + state.entangled[1]
+            ]
         }
     }
 })

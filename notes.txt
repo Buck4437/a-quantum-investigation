@@ -12,8 +12,6 @@ Each group member submits the work on Moodle (no group submission).
 Write solution page for each puzzle.
 
 TODO:
-Solution
-
 Fact Check (Done after every stuff)
 
 Polishing:
