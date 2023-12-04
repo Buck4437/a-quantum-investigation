@@ -36,15 +36,24 @@ const waveComponent = Vue.component("wave-diagram", {
         freq: Number,
         colour: String,
         update: Number,
-        inverted: Boolean
+        inverted: Boolean,
+        solved: Boolean
     },
     methods: {
+        animate() {
+            this.timer = 10;
+        },
         repaint() {
             const c = this.$refs.canvas;
 
             if (c != null && c != undefined) {
                 const ctx = c.getContext("2d");
                 ctx.clearRect(0, 0, c.width, c.height); 
+
+                if (this.solved) {
+                    ctx.fillStyle = "green";
+                    ctx.fillRect(0, 0, c.width, c.height);
+                }
 
                 // Base line, (x, y)
                 ctx.beginPath();
@@ -57,7 +66,8 @@ const waveComponent = Vue.component("wave-diagram", {
                 ctx.strokeStyle = this.colour;
                 ctx.moveTo(0, this.calc(0));
                 for (let i = 1; i <= 600; i += 1) {
-                    ctx.lineTo(i, this.calc((i / 600) * 2 * Math.PI));
+                    const x = i - this.timer * 50;
+                    ctx.lineTo(i, this.calc((x / 600) * 2 * Math.PI));
                 }
                 ctx.stroke();
             }
@@ -81,14 +91,22 @@ const waveComponent = Vue.component("wave-diagram", {
         colour() {
             this.repaint();
         },
+        timer() {
+            this.repaint();
+        },
         update() {
             this.repaint();
-        } 
+        },
+        solved() {
+            this.repaint();
+        }
     },
     mounted() {
-        // setInterval(() => {
-        //     if (this.timer >)
-        // }, 50);
+        setInterval(() => {
+            if (this.timer > 0) {
+                this.timer = Math.max(this.timer - 1, 0);
+            }
+        }, 50);
         this.repaint();
     },
     template: `
@@ -160,10 +178,13 @@ const app = new Vue({
     },
     methods: {
         activate() {
+            this.$refs.device.animate();
+
             if (!this.solved.con) {
                 const absDiff = Math.abs(this.parsedInput.freq - this.currentAnswers.con.freq);
                 if (this.parsedInput.mode === this.currentAnswers.con.mode && absDiff <= 0.3) {
                     this.solved.con = true;
+                    this.$refs.con.animate();
                 }
             }
 
@@ -171,6 +192,7 @@ const app = new Vue({
                 const absDiff = Math.abs(this.parsedInput.freq - this.currentAnswers.des.freq);
                 if (this.parsedInput.mode === this.currentAnswers.des.mode && absDiff <= 0.3) {
                     this.solved.des = true;
+                    this.$refs.des.animate();
                 }
             }
         },

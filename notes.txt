@@ -12,16 +12,7 @@ Each group member submits the work on Moodle (no group submission).
 Write solution page for each puzzle.
 
 TODO:
-Fact Check (Done after every stuff)
-
-Polishing:
-- Package Delivery (!!!)
-
-Assets: 
-- Missing: Unstable crates / Missing Label 1, 2 / Alice and Bob
+Fact Check (Done after every stuff), especially package Delivery (!!!)
 
 Unstable Crate:
 - Add animation when you measure device (make waveform goes whooooom)
-
-Alice and Bob's Entanglement
-- Somehow express their Entanglement relationship using art / canvas / whatever

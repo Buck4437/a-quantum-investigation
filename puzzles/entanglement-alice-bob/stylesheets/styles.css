@@ -9,8 +9,17 @@ body {
     font-size: 16px;
 }
 
+img {
+    width: 300px;
+    height: 300px;
+}
+
 .rules li {
     text-align: left;
+}
+
+.game {
+    border: 2px solid white;
 }
 
 .level-display {

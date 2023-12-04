@@ -36,6 +36,8 @@
 
                 <hr width="100%">
 
+                <img src="src/crate.png">
+
                 <div class="rules">
                     Rules:
                     <ul>
@@ -80,7 +82,9 @@
                                             :freq="currentAnswers.con.freq" 
                                             colour="white" 
                                             :update="updateBit" 
-                                            :inverted="false"></wave-diagram>
+                                            :inverted="false"
+                                            :solved="solved.con"
+                                            ref="con"></wave-diagram>
         
                                 <div :class="{'green': solved.des}">
                                     Unstable State
@@ -90,7 +94,9 @@
                                             :freq="currentAnswers.des.freq" 
                                             colour="white" 
                                             :update="updateBit" 
-                                            :inverted="true"></wave-diagram>
+                                            :inverted="true"
+                                            :solved="solved.des"
+                                            ref="des"></wave-diagram>
                                     
                             </div>
                             
@@ -103,7 +109,8 @@
                                 <wave-diagram :mode="parsedInput.mode" 
                                             :freq="parsedInput.freq" 
                                             colour="#7979d1" 
-                                            :update="updateBit"></wave-diagram>
+                                            :update="updateBit"
+                                            ref="device"></wave-diagram>
 
                                 <div>
                                     Device mode: 
