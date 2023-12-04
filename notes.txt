@@ -16,9 +16,6 @@ Solution
 
 Fact Check (Done after every stuff)
 
-Introduction (aka README, explanations, etc.)
-- Create it ffs
-
 Polishing:
 - Package Delivery (!!!)
 

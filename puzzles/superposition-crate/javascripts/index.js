@@ -132,7 +132,7 @@ const app = new Vue({
             "'Anyways, I have made a device that might be able to cancel out the unstable states...'",
             "He hands a device to you.",
             "WIP: Image",
-            "'There are multiple types of crates here. Use this device to stablise all of the crates.'",
+            "'There are multiple types of crates here. Use this device to stabilise all of the crates.'",
             "'I believe in you.'",
             "After handing over the device to you. He runs out immediately.",
             "Looks like you have some work to do."

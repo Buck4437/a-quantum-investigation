@@ -14,6 +14,134 @@
                 <p>
                     Solutions to puzzles can be found here.
                 </p>
+                <solution-display title="Beginning / Warehouse / First Glimpse Into Quantum">
+                    <p>
+                        Follow the instructions of the puzzle. Some of the words are highlighted in aqua and are
+                        in uppercase. Those are the answer to the puzzles.
+                    </p>
+                    <p>
+                        The answers are: 
+                        <span class="password">WAREHOUSE</span>, 
+                        <span class="password">QUANTUM</span>, 
+                        <span class="password">SUPERPOSITION</span>
+                    </p>
+                </solution-display>
+
+                <solution-display title="Inviting Rin">
+                    <p>
+                        This puzzle requires the solver to alter the possibility to exactly 100%. 
+                        A technique for doing so is to work in reverse and deduce the possible solve paths.
+                    </p>
+                    <p>
+                        One possible solve paths:
+                    </p>
+                    <p>
+                        1 (+7) -> 8 (x1.5) -> 12 (x1.5) -> 18 (x1.5) -> 27 (x1.5) -> 40 (x1.5) -> 60 (+7) -> 67 (x1.5) -> 100
+                    </p>
+                    <p>
+                        After solving the puzzle, the solver would obtain the answer <span class="password">CAMPING</span>.
+                    </p>
+                </solution-display>
+
+                <solution-display title="Missing Labels" class="label-sol">
+                    <p>
+                        This puzzle requires the solver to deduce the superposition states of the quantum balls.
+                        As each quantum ball can only be at one location at a time,
+                        the solver must repeatly measure and reset the box.
+                    </p>
+                    <p>
+                        After obtaining all possible locations, the solver can use the fact that,
+                        each pair of location must be orthogonically adjacent, to match up the locations 
+                        of the balls. 
+                    </p>
+                    <p>
+                        The solution for each puzzle is as follows (note that colours can be swapped):
+                    </p>
+                    <div v-for="(array, i) in answers.label1" class="answer-list">
+                        <p>
+                            Box {{i + 1}}
+                        </p>
+                        <table>
+                            <tr v-for="row in array">
+                                <td v-for="cell in row" :class="labelGetData(cell).class">
+                                    {{labelGetData(cell).text}}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <p>
+                        After solving the puzzle, the solver would obtain the answer <span class="password">MEASURES</span>.
+                    </p>
+                </solution-display>
+
+                <solution-display title="Unstable Crates">
+                    <p>
+                        This puzzle requires the solver to stabilise five crates using interference.
+                        The solver needs to match the waveform of the stable state, and match the inversion
+                        of the unstable state.
+                    </p>
+                    <p>
+                        There are five modes for the device, representing different kinds of waveform:
+                    </p>
+                    <ul>
+                        <li>1: Sine</li>
+                        <li>2: Tangent</li>
+                        <li>3: Sawtooth</li>
+                        <li>4: Square</li>
+                        <li>5: Triangle</li>
+                    </ul>
+                    <p>
+                        Note that there is a small margin for error. 
+                        If the frequencies are close enough, then it would count as correct.
+                    </p>
+                    <p>
+                        After solving the puzzle, the solver would obtain the answer <span class="password">COLLAPSE</span>.
+                    </p>
+                </solution-display>
+
+                <solution-display title="Second Glimpse Into Quantum / Entanglement">
+                    <p>
+                        Follow the instructions of the puzzle. Some of the words are highlighted in aqua and are
+                        in uppercase. Those are the answer to the puzzles.
+                    </p>
+                    <p>
+                        The answers are: 
+                        <span class="password">ENTANLGED</span>, 
+                        <span class="password">SPOOKY</span>
+                    </p>
+                </solution-display>
+
+                <solution-display title="Alice and Bob's entanglement">
+                    <p>
+                        This puzzle tells the solver that Alice's and Bob's minds are entangled, 
+                        suggesting some kind of relationship between them. If we press "Give Up", 
+                        the puzzle will show the correct answer, which gives us information to 
+                        deduce the entanglement relationship between Alice and Bob.
+                    </p>
+                    <p>
+                        The relationships are as follows:
+                    </p>
+                    <p>
+                        Level 1: Alice and Bob are thinking of the same thing.
+                    </p>
+                    <p>
+                        Level 2: Alice's and Bob's number sums up to 100.
+                    </p>
+                    <p>
+                        Level 3: Bob's letter is Alice's letter shifted 4 places (e.g. A -> E, B -> F... Z -> D).
+                    </p>
+                    <p>
+                        Level 4: The first two bits of Alice's and Bob's bit string are equal. 
+                        The last three bits of Alice's and Bob's bit string are flipped. (e.g. if Alice's
+                        bit string is "00000", then Bob's bit string is become "00111").
+                    </p>
+                    <p>
+                        After solving the puzzle, the solver would obtain the answer <span class="password">TOGETHER</span>.
+                    </p>
+                </solution-display>
+
+                
             </base-puzzle>
         </div>
     </body>

@@ -5,3 +5,51 @@
 a, a:hover, a:visited, a:active {
     color: lime;
 }
+
+.solution-display {
+    padding-bottom: 16px;
+}
+
+.solution-display .solution-header {
+    padding-bottom: 16px;
+}
+
+.solution-display button {
+    width: 30px;
+    height: 30px;
+}
+
+.solution-display .solution {
+    border: 2px solid white;
+    padding: 8px;
+}
+
+.red-bg {
+    background-color: red;
+}
+
+.light-blue-bg {
+    background-color: #7979d1;
+}
+
+.pink-bg {
+    background-color: pink;
+}
+
+/* For label 1, label 2 */
+.label-sol .answer-list {
+    text-align: center;
+}
+
+.label-sol table {
+    display: inline-block;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+}
+
+.label-sol td {
+    border: 2px solid white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
