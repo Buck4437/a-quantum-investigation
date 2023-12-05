@@ -10,7 +10,7 @@
         <div id="app">
             <base-puzzle :title="title" class="puzzle">
                 <template v-slot:flavour-text>
-                    "I want to ask Rin out for a meal, but she always rejects me..."
+                    "I invited Rin to our dinner, but she rejected me..."
                 </template>
 
                 <hr width="100%">
@@ -33,7 +33,7 @@
                     </p>
 
                     <p>
-                        <i>(Analogy taken from lecture notes)</i>
+                        <i>(Analogy taken from the lecture notes)</i>
                     </p>
                 </div>
 
@@ -42,14 +42,16 @@
                 <div class="rules">
                     Rules:
                     <ul>
-                        <li>The goal of this puzzle is to invite Rin for dinner.</li>
+                        <li>The goal is to invite Rin for dinner.</li>
                         <li>You can perform two actions to alter the probability: Converse and Chatter</li>
                         <li>Converse increases the probability by 7.</li>
-                        <li>Chatter multiplies the probability by 1.5, rounded down.</li>
-                        <li>Your target is to reach a probability of 100%.</li>
-                        <li>However, the probability will be reset to zero if it exceeds 1%.</li>
+                        <li>Chatter multiplies the probability by 1.5, <b>rounded down</b>.</li>
+                        <li>Your target is to reach a probability of 100%, 
+                            however, the probability will be set to 1% if it exceeds 100%.</li>
                         <li>You can also reset at any time.</li>
                     </ul>
+                    <i>(Please note that this is only an analogy of quantum superposition. In real life,
+                        superposition may not be involved when your crush have rejected your proposal.)</i>
                 </div>
 
                 <hr width="100%">

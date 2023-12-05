@@ -105,6 +105,10 @@ input {
 }
 
 /* Styling */
+.red {
+    color: darkred;
+}
+
 .green {
     color: lime;
 }

@@ -10,7 +10,7 @@
         <div id="app">
             <base-puzzle :title="title" class="puzzle">
                 <template v-slot:flavour-text>
-                    I lost the labels for these packages. Can you fix them for me?
+                    I have lost the labels for these packages. Can you repair them for me?
                 </template>
 
                 <hr width="100%">
@@ -18,15 +18,19 @@
                 <div class="rules">
                     Rules:<br>
                     <ul>
-                        <li>There are four levels in total.</li>
-                        <li>Each level consists a package with three quantum balls.</li>
-                        <li>The three quantum balls are in a superposition state of two <b>orthogonically adjacent</b> locations.</li>
-                        <li>Your target is to restore the original states of the label.</li>
-                        <li>You can open the package to gain information on the positions of the balls. 
-                            After opening the package, you can reset the package back to the superposition states.</li>
-                        <li>To label a ball, click on the two cells that a ball is in superposition state of.</li>
+                        <li>There are four boxes in total.</li>
+                        <li>Each box contains three quantum balls.</li>
+                        <li>Each ball is in a superposition state of two locations.
+                        The two locations that a ball may appear in is directly next to each other (orthogonally adjacent).</li>
+                        <li>When you open the box, the state of the balls will collapse, giving you one possible 
+                            location of the balls. 
+                            After opening the box, you can reset the box back to the superposition states.</li>
+                        <li>Your target is to label all three balls by marking the possible locations of each ball.</li>
+                        <li>To mark a ball, click on the two possible locations of the ball.
+                            The colour of the cell doesn't matter, as long as the two locations have the same colour.
+                        </li>
                         <li>Clicking on a labelled cell will remove the connection.</li>
-                        <li>Hint: Measure multiple times to determine the possible positions of the balls!</li>
+                        <li>Hint: Measure multiple times to determine all possible positions of the balls!</li>
                     </ul>
                 </div>
                 
@@ -75,7 +79,7 @@
                         </div>
                     </template>
                     <div v-else="level > LEVELMAX">
-                        Task completed!<br><br>
+                        Task complete!<br><br>
                         As a reference, you jotted down <span class="password">{{text.password}}</span> in your memo.<br>
                         <button @click="resetGame">Play Again</button>
                     </div>

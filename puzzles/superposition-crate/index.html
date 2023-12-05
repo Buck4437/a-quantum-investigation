@@ -19,37 +19,38 @@
 
                     <p>
                         Interference is like musicians in a band: if all of them are in harmony,
-                        the music is also harmonous and is amplified. However, if they are in conflict, then
-                        the music is chaotic or even inaudible.
+                        the music is also harmonous and sounds better. However, if they are in conflict, then
+                        the music is chaotic and sounds horrible.
                     </p>
                     
                     <p>
                         Similarly, quantum interference happens when quantum objects interact with each other.
                         When quantum interference happens, 
-                        quantum states might be cancelled out or become amplified.
+                        the states of the objects might be cancelled out or becomes more likely.
                     </p>
 
                     <p>
-                        This allows us to remove the unwanted quantum state and amplify the wanted ones.
+                        Quantum interference allows us to remove the unwanted quantum state and amplify the wanted ones.
                     </p>
                 </div>
 
                 <hr width="100%">
-
-                <img src="src/crate.png">
 
                 <div class="rules">
                     Rules:
                     <ul>
                         <li>The goal of this puzzle is to stabilise all quantum crates.</li>
-                        <li>Each quantum crate is in a superposition state of stable and unstable. They are represented by waveforms.</li>
+                        <li>Each quantum crate is in a superposition state of stable and unstable. The states are represented by waveforms.</li>
                         <li>There are two things you need to accomplish: amplifying the stable state, and cancelling the unstable state.</li>
                         <li>To amplify the stable state, calibrate the device such that its waveform matches that of the stable state.</li>
                         <li>To cancel the unstable state, calibrate the device such that its waveform is the <b>inversion</b> of the waveform of the unstable state.</li>
                     </ul>
+                    <i>(Note that this puzzle is only an analogy of quantum interference. The waveforms are for visualization purposes.)</i>
                 </div>
 
                 <hr width="100%">
+
+                <img src="src/crate.png">
 
                 <div class="game">
                     <div v-if="loreText !== null" class="text-content">
@@ -86,7 +87,7 @@
                                             :solved="solved.con"
                                             ref="con"></wave-diagram>
         
-                                <div :class="{'green': solved.des}">
+                                <div :class="{'red': solved.des}">
                                     Unstable State
                                 </div>
                                     
@@ -96,6 +97,7 @@
                                             :update="updateBit" 
                                             :inverted="true"
                                             :solved="solved.des"
+                                            solved-colour="darkred"
                                             ref="des"></wave-diagram>
                                     
                             </div>

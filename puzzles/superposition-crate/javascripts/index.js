@@ -35,6 +35,10 @@ const waveComponent = Vue.component("wave-diagram", {
         mode: Number,
         freq: Number,
         colour: String,
+        solvedColour: {
+            type: String,
+            default: "green"
+        },
         update: Number,
         inverted: Boolean,
         solved: Boolean
@@ -51,7 +55,7 @@ const waveComponent = Vue.component("wave-diagram", {
                 ctx.clearRect(0, 0, c.width, c.height); 
 
                 if (this.solved) {
-                    ctx.fillStyle = "green";
+                    ctx.fillStyle = this.solvedColour;
                     ctx.fillRect(0, 0, c.width, c.height);
                 }
 
