@@ -164,7 +164,6 @@ const app = new Vue({
     },
     methods: {
         submit() {
-            console.log(this.filteredLinks);
             const answer = this.inputModel.trim().toUpperCase().replaceAll(" ", "")
 
             if (answer === "") {
