@@ -9,13 +9,13 @@ const app = new Vue({
         textId: 0,
         password: "CAMPING",
         text1: [
-            "Stephen will be having a dinner with his friends. He wanted to invite Rin to the dinner.",
+            "Stephen will be having dinner with his friends. He wanted to invite Rin to the dinner.",
             "However, for some unknown reason, Rin has rejected him three times in a row.",
             "'I wish I have a device similar to the one I have for boxes,' he said.",
             "'But all I have is a sensor that estimates possibilities of outcomes.'",
             "'These sensors aren't perfect, but it should be good enough,' he said.",
             "After configuring the sensor, you head to Rin's house.",
-            "Rin opened the door and invites you in. You two sat on the couch.",
+            "Rin opened the door and invited you in. You two sat on the couch.",
             "You looked at the sensor:",
             "Probability of success: 1%.",
             "Wow.",
@@ -24,7 +24,7 @@ const app = new Vue({
         text2: [
             "You invited Rin for dinner.",
             "'Yeah, I can come over,' she said.",
-            "'Great, I will see you at Stephen's hosue then.'",
+            "'Great, I will see you at Stephen's house then.'",
             "After some effort, you have finally shifted the probability to your favour."
         ],
 

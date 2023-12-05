@@ -13,13 +13,8 @@ TODO:
 Fact Check (Done after every stuff), especially package Delivery (!!!)
 
 Checklist:
-- Entanglement
-
-- Alice Bob
 - Label2
 - Teleport
-
-- Meta
 
 - Epilogue
 
