@@ -25,13 +25,15 @@ const app = new Vue({
         openAll(experiment) {
             if (experiment === 1) {
                 if (this.seed == -1) {
-                    this.seed = Math.floor(Math.random() * (2**16))
+                    this.seed = Math.floor(Math.random() * (2**16));
                 }
             } else if (experiment === 2) {
-                this.seed2 = 0;
+                if (this.seed2 == -1) {
+                    this.seed2 = Math.floor(Math.random() * 16);
+                }
             } else {
                 if (this.seed3 == -1) {
-                    this.seed3 = Math.floor(Math.random() * (2**16))
+                    this.seed3 = Math.floor(Math.random() * (2**16));
                 }
             }
         }
