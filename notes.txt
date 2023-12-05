@@ -9,10 +9,28 @@ Each group member submits the work on Moodle (no group submission).
 (2) how original is your product
 (3) how accessible is your product (i.e. non-technical, easy to enjoy)
 
-Write solution page for each puzzle.
-
 TODO:
 Fact Check (Done after every stuff), especially package Delivery (!!!)
+Slight Polish? Tbh idek
 
-Unstable Crate:
-- Add animation when you measure device (make waveform goes whooooom)
+Checklist:
+- Beginning
+- Warehouse
+- First glimpse
+
+- Rin
+- Label1
+- Interference
+
+- Second glimpse
+- Entanglement
+
+- Alice Bob
+- Label2
+- Teleport
+
+- Meta
+
+- Epilogue
+
+- Solution
