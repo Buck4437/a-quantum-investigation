@@ -18,29 +18,29 @@
                 <div class="page" v-show="page === 1">
                     <p>
                         "Do you know that you can teleport quantum states? Sounds cool, right?" 
-                        Stephen brings you to a room that has a sign "Delivery". Both of you sit in front of 
-                        a machine with a bunch of loose wires, a monitor, and what seems like a scanner.
+                        Stephen brought you to a room. Both of you sat in front of 
+                        a machine with a bunch of loose wires, a monitor, and what seemed like a scanner.
                     </p>
 
                     <img src="src/setup.png">
     
                     <p>
-                        Stephen continues: "we will be sending some packages using this device right here.
+                        Stephen continued: "We will be sending some packages using this device.
                         However, I often run into issues when sending quantum information, so I thought that
                         you might be interested in joining."
                     </p>
                     
                     <p>
-                        Stephen turns on the monitor, and then he takes out a box from the storage room nearby.
-                        You see a label on the box:
+                        Stephen turned on the monitor. After that, he took out a box from the storage room nearby.
+                        You saw a label on the box:
                     </p>
 
                     <img src="src/label.png">
 
                     <p>
-                        "A company is ordering some quantum balls for their lucky draw, but they are on the other side of the Earth,"
-                        Stephen says. 
-                        "We can't just send the balls to them using trucks because the environment is too unstable. 
+                        "A company is ordering some quantum balls, 
+                        but they are on the other side of the Earth," Stephen said. 
+                        "We can't just send the balls to them using trucks because the environment is very unstable. 
                         The states of the balls will probably collapse before reaching the company, and that's not good.
                         So, we will have to send the states of the ball using quantum teleportation."
                     </p>
@@ -52,33 +52,38 @@
                     </p>
 
                     <p>
-                        Stephen chuckled. "Of course not! Would you send the entire hard disk if you want to send an file?
+                        Stephen chuckled. "Of course not! Would you send the entire hard disk if you want to send a file?
                         We are merely sending the states of the quantum balls, but not the physical balls."
                     </p>
 
                     <p>
-                        "To do that, we will make use of entangled particles. Each of us have particles that are entangled together.
-                        If I measure a particle on my side, the states of the particle on their side will update accordingly. 
-                        This isn't very helpful, as the measurement result is completely random. However, if we mix the entangled particle
-                        and our quantum balls, we can generate qubits that also carry information about our balls."
+                        "To do that, we will make use of entangled particles. Both of us have particles that are entangled together.
+                        If I measure a particle on my side, the states of the company's particle will update accordingly."
                     </p>
 
                     <p>
-                        "Now, after I measure the processed qubits on my side, I can email the measurement result to the company.
+                        "Directly measuring the entangled particles isn't very helpful, 
+                        as the measurement result doesn't contain any information about our ball. 
+                        However, if we mix the entangled particle and our quantum balls before measurement, 
+                        the result will also contain information about our ball.
+                    </p>
+
+                    <p>
+                        "Now, after I measure the processed qubits on my side, I can send the measurement result to the company.
                         With my measurement results and the entangled particle on their side, 
                         they can reconstruct the state of the quantum balls!"
                     </p>
 
                     <p>
-                        You remember when Stephen mentions that to get the full picture of the entangled particles,
-                        you also need to know the states of the other particle. Maybe this is why you also 
-                        need to send the measurement result.
+                        You remembered when Stephen mentioned that to get the full picture of the entangled particles,
+                        you need to involve the states of both particles. Maybe this was why Stephen 
+                        needed to send the measurement result.
                     </p>
 
                     <p>
-                        "As a side note, even though state collapse is instantaneous, 
-                        we aren't delivering quantum information beyond the speed of light," Stephen adds.
-                        "We still need to send the measurement results for them to decode the qubits."
+                        "As a side note, even though the states of particles are defined instantly, 
+                        we aren't sending information beyond the speed of light," Stephen adds.
+                        "We still need to email the measurement results for them to decode the qubits."
                     </p>
 
                     <img src="src/teleport.png">
@@ -86,16 +91,16 @@
 
                 <div class="page" v-show="page === 3">
                     <p>
-                        "To combine that states of the particles, we need some kind of analyser.
+                        "To mix the particles, we need some kind of analyser.
                         As you can see, we have one here... damn it, the analyser broke."
                     </p>
 
                     <p>
-                        "Uh, can you help me with fixing it? Follow the instructions and it should be fine."
+                        "Uh, can you help me with fixing it? Just follow the instructions and it should be fine."
                     </p>
 
                     <p>
-                        You look at the terminal.
+                        You looked at the terminal.
                     </p>
                     
                     <hr width="100%">
@@ -103,13 +108,15 @@
                         Rules:<br>
                         <ul>
                             <li>There are three protocols. Fix all protocols to proceed.</li>
-                            <li>The analyser combines a quantum ball and an entangled particle together to create 
-                                qubits with a combined states.</li>
-                            <li>Your target is to repair the analyser by figuring out the sequence of instructions
-                                used to create such particle.</li>
-                            <li>Create the ball on the right by applying the correct sequence of instruction.</li>
+                            <li>The analyser combines a quantum ball and an entangled particle to create 
+                                qubits with combined states.</li>
+                            <li>Your goal is to repair the analyser by figuring out the sequence of instructions
+                                used to create the target qubits.</li>
+                            <li>Create the ball on the right by applying the correct sequence of instructions.</li>
+                            <li>Hint: Experiment with different configurations to determine what they do!</li>
                         </ul>
-                        <i>(Note: All protocols and step names are fictional.)</i>
+                        <i>(Note: This puzzle only serves as an abstraction of quantum information processing. 
+                            All protocols, step names and states are fictional.)</i>
 
                     <hr width="100%">
 
@@ -180,34 +187,38 @@
                 <div class="page" v-show="page === 4">
 
                     <p>
-                        "Thank you for fixing the analyser. Now we just need to press this button, 
-                        and the analyser would process the balls and generate the output of measurement."
+                        "Thank you for fixing the analyser. Now we just need to press this button. 
+                        After that, the analyser would process the balls and generate the output of measurement."
                     </p>
 
                     <div class="terminal2">
                         <span v-if="!buttonPressed">Awaiting confirmation...</span>
                         <span v-else>Teleportation complete. 
-                            Measurement result:<br>110010100101 => <span class="password">{{password}}</span></span>
+                            Measurement result:<br>111001110101110010100101 => <span class="password">{{password}}</span></span>
                     </div>
 
                     <button v-if="!buttonPressed" @click="buttonPressed = true">Confirm</button>
 
                     <template v-if="buttonPressed">
                         <p>
-                            "As you can see, we have processed the measurement outputs to make it more human-readable," Stephen said.
+                            "The measurement outputs are processed to make it more human-readable," Stephen said.
 
-                            "Of course, you could just email the zeroes and ones instead, 
+                            "You could also email the zeroes and ones instead, 
                             but I thought that making it output text would be more interesting."
                         </p>
 
                         <p>
-                            "Now we just need to email them this output, and they would be able to recover the balls!"
+                            "Now we just need to email them this output, and 
+                            they will be able to recover the quantum states of the balls!"
                         </p>
     
                         <p>
-                            "Oh yeah, we can throw away the balls now. Quantum information cannot be copied,
-                            so the quantum states of the balls are actually transferred to them. Now, these balls no longer
-                            contain the original quantum states."
+                            "We can throw away the balls now, as these balls no longer contain
+                            the original quantum states. While I would like to keep a copy of the 
+                            states of the balls, quantum information cannot be copied.
+                            
+                            So, we cannot keep a local copy after teleporting the quantum 
+                            states to the companies."
                         </p>
     
                         <p>
@@ -215,7 +226,6 @@
                             jot it down in your <span class="password">memo</span>.
                         </p>
                     </template>
-
                 </div>
                 
                 <hr width="100%">
@@ -226,7 +236,7 @@
             </base-puzzle>
         </div>
     </body>
-    <script src="../../libraries/vue.js"></script>
+    <script src="../../libraries/vue.min.js"></script>
 
     <script src="../../global/BasePuzzle.js"></script>
     <script src="javascripts/index.js"></script>

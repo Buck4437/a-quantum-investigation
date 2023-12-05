@@ -38,7 +38,7 @@ const answers = {
         {name: "Missing Labels", length: 8, index: 3, answer: "MEASURES"},
         {name: "Package Delivery", length: 12, index: 7, answer: "TRANSMISSION"},
         {name: "First Glimpse into Quantum", length: 13, index: 13, answer: "SUPERPOSITION"},
-        {name: "Second Glimpse into Quantum", length: 9, index: 3, answer: "ENTANLGED"},
+        {name: "Second Glimpse into Quantum", length: 9, index: 3, answer: "ENTANGLED"},
         {name: "Entanglement", length: 6, index: 6, answer: "SPOOKY"}
     ]
 }

@@ -190,6 +190,7 @@ ul {
 
 .terminal2 {
     width: 60%;
+    min-width: 400px;
     height: 300px;
     margin: 0 auto;
     border: 2px solid white;
